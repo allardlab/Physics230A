@@ -23,14 +23,14 @@
       "installJupyterlab": true
     },
 
-    // Quarto, and with it TinyTeX, so a student can compile the .tex of a problem set or notebook in the Codespace with LaTeX Workshop below.
+    // Quarto; TinyTeX is installed later, by the `tex` step of postCreateCommand, not by this feature's `installTinyTex` option.
     //
-    // `installTinyTex` runs `quarto install tinytex` as the container user, into ~/.TinyTeX; the packages the .tex files need beyond TinyTeX's own set are installed by the `tex` step of postCreateCommand.
+    // That option was tried, and it took every Codespace down: before installing TinyTeX the feature runs `apt-get update`, and the base image carries a Yarn apt source whose signing key apt cannot verify (NO_PUBKEY 62D54FD4003F6525), which apt treats as fatal.
+    // A feature that fails fails the image build, and GitHub then hands the student a bare recovery container with nothing in it.
+    // Without the option this feature never calls apt, which is the build that has always worked; and a lifecycle step that fails only logs an error, with the Codespace otherwise intact.
     //
     // This does not make the Codespace able to run scripts/deploy.sh: that also needs inkscape, to derive each figure's svg, and the Codespace has none.
-    "ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {
-      "installTinyTex": true
-    }
+    "ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {}
   },
 
   // Belt and braces for the PATH problem described above: anything pip installed for the container user stays reachable, whoever is doing the launching.
@@ -53,14 +53,16 @@
   // 2. The venv registered as a named kernel, so the JupyterLab installed by the feature above can see it.
   //    Without this a student opening a notebook in JupyterLab gets the bare system python, which has no numpy, and the notebook fails on its first import while the same file runs perfectly in the VSCode UI beside it.
   //
-  // `tex`, the LaTeX packages the .tex files load, plus latexmk, which is how LaTeX Workshop builds by default.
+  // `tex`, TinyTeX itself, then the LaTeX packages the .tex files load, plus latexmk, which is how LaTeX Workshop builds by default.
+  // TinyTeX goes into ~/.TinyTeX, as the feature's option would have put it, but without the apt step that broke the build; see the Quarto feature above.
+  // pdflatex needs nothing from apt, and pdflatex is what LaTeX Workshop runs.
   // The list is measured rather than guessed: every file TeX read while pdflatex compiled PS1, PS5 and python-test-drive, each mapped to its TeX Live package.
   // Most are already in TinyTeX, and `tlmgr install` of an installed package does nothing, so the list is the whole set rather than only the gaps --- that way it stays right when TinyTeX's own set changes.
   // Re-measure it if the problem sets' Latex header or Quarto's template changes what they load.
   // pdflatex rather than xelatex is what gets measured because it is latexmk's default, and the .tex files choose their fonts with `iftex` so either engine works.
   "postCreateCommand": {
     "python": "pip install --no-cache-dir uv && uv sync --frozen && uv run python -m ipykernel install --user --name p230a --display-name 'Python (Physics 230A)'",
-    "tex": "$HOME/.TinyTeX/bin/*/tlmgr install latexmk amsfonts amsmath atbegshi atveryend auxhook bigintcalc bitset bookmark booktabs caption cm ec epstopdf-pkg etexcmds etoolbox fancyvrb float fontname footmisc footnotehyper framed gettitlestring graphics graphics-cfg graphics-def hycolor hyperref iftex infwarerr intcalc koma-script kpathsea kvdefinekeys kvoptions kvsetkeys l3backend latex latexconfig letltxmacro lm ltxcmds microtype mptopdf pdfescape pdftexcmds refcount rerunfilecheck tools uniquecounter upquote url xcolor xurl"
+    "tex": "quarto install tinytex --no-prompt && $HOME/.TinyTeX/bin/*/tlmgr install latexmk amsfonts amsmath atbegshi atveryend auxhook bigintcalc bitset bookmark booktabs caption cm ec epstopdf-pkg etexcmds etoolbox fancyvrb float fontname footmisc footnotehyper framed gettitlestring graphics graphics-cfg graphics-def hycolor hyperref iftex infwarerr intcalc koma-script kpathsea kvdefinekeys kvoptions kvsetkeys l3backend latex latexconfig letltxmacro lm ltxcmds microtype mptopdf pdfescape pdftexcmds refcount rerunfilecheck tools uniquecounter upquote url xcolor xurl"
   },
 
   "customizations": {
