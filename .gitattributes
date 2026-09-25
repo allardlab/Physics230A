@@ -31,6 +31,8 @@
 *.woff2 binary
 *.ttf   binary
 *.otf   binary
+# The decks' movies, in slides/media/ and copied into the built site beside the decks that play them.
+*.mp4   binary
 
 # The built site. Two things follow from marking it generated, and both are wanted:
 # GitHub stops counting it towards the repository's language bar, which would otherwise read "HTML 99%" --- a fact about Quarto's output rather than about this course --- and it collapses docs/ out of pull request diffs by default.

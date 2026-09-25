@@ -2,6 +2,8 @@
 
 Every page on this site is built with `embed-resources`, so it is one self-contained file: the stylesheets, the scripts and the typefaces are not fetched from anywhere, they are inlined into the page itself. That is deliberate --- a page opens with no network, and a student reading offline still sees its equations and its figures --- and it means each page *redistributes* the software and fonts below rather than merely linking to them. The published PDFs embed their typefaces for the same reason. Several of these licences require their notice to travel with the copy. This file is that notice.
 
+The one exception is a slide deck that plays a movie. It is built *linked* rather than self-contained, so its copies of reveal.js, Quarto's scripts and the fonts below sit as ordinary files in a `<deck>_files/` folder beside it, and its movies in `media/`. Nothing is fetched from anywhere in that case either, and the copies are the same software under the same licences, so everything below applies to those folders exactly as it does to an inlined page.
+
 It is generated material's companion, not a claim of ownership: nothing listed here belongs to the course. The course's own licence is in [LICENSE.md](LICENSE.md).
 
 Everything below was read out of the built files rather than recalled --- the html by decoding each page's inlined `data:` URIs, the PDFs with `pdffonts`. Re-check it whenever the toolchain moves or the font set changes; `scripts/build_fonts.py` in the source repository says so at the point where that would happen.
@@ -52,9 +54,9 @@ All of the following are MIT, which permits redistribution provided the copyrigh
 
 **One absence is worth stating rather than leaving out.**
 
-**MathJax is not redistributed here, and is not fetched either.** Every problem set, notebook and page sets `html-math-method: mathml`, so its mathematics is rendered to MathML when the page is built.
+**MathJax is not redistributed here, and is not fetched either.** Every problem set, notebook, page and slide deck sets `html-math-method: mathml`, so its mathematics is rendered to MathML when the page is built.
 
-The decks are the one place where that needs care rather than a flat statement. reveal.js bundles a math *plugin*, and that plugin's code is inlined into every deck --- which is why the string "MathJax" appears in one. The plugin would fetch MathJax from a CDN at view time if a deck carried mathematical notation; no deck currently does, no deck holds a copy, and a deck built here contains no remote `src` of any kind. Checked rather than assumed. A deck that later sets mathematics wants re-checking on both counts: whether it still opens with no network, and whether MathJax belongs in this file.
+The decks are where that needed care rather than a flat statement. Left to Quarto's default, a deck hands its mathematics to reveal.js's math *plugin*, which fetches MathJax from a CDN when the deck is opened. The decks now set MathML like everything else, so that plugin is not loaded: no deck's html contains the string "MathJax", and no deck contains a remote `src` of any kind. The plugin's own source files do still sit, unloaded, inside a linked deck's `<deck>_files/` folder, because Quarto copies reveal.js's plugin directory whole; they are part of reveal.js, above, and are not MathJax. Checked rather than assumed, in the build of 24 September 2026.
 
 ## Fonts embedded in the published PDFs
 
@@ -86,3 +88,5 @@ Re-drawing those figures in an open face would remove it. That is recorded as an
 ## Material quoted inside the course
 
 The problem sets cite published work, and some quote or reproduce material from it. That material belongs to its owners and appears as quotation for teaching. It is not covered by the course's licence and is not offered for reuse.
+
+The slide decks do the same at larger scale: they reproduce figures and movies from published papers, each cited on the slide that shows it, along with photographs, an xkcd strip under its CC BY-NC 2.5 licence, and a historical film. The same terms apply to all of it. The NETosis deck's own experiments and movies are the Allard lab's, by Matt Bovyn.
