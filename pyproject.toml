@@ -1,0 +1,35 @@
+# The Python environment the lecture notebooks execute in.
+#
+# This file and uv.lock beside it are the whole dependency story: `uv sync` builds an identical .venv from them on this machine and in a Codespace, which is what keeps a figure baked into the html at build time and the same figure a student regenerates by running the .ipynb from being two different pictures.
+#
+# Not a package --- there is nothing here to import or install, only a set of dependencies --- hence `package = false` below.
+#
+# Changing anything here changes every generated figure, so scripts/deploy.sh folds this file and uv.lock into GLOBAL_HASH and the whole cache busts.
+# The problem sets execute nothing and are unaffected by everything in this file; see "Executable Python in the lecture notebooks" in CLAUDE.md for why the split is drawn there.
+
+[project]
+name = "p230a"
+version = "0.1.0"
+description = "Execution environment for the Physics 230A/146A lecture notebooks"
+requires-python = ">=3.12"
+
+dependencies = [
+  # The numerical stack the notebooks compute with.
+  "numpy>=2.0",
+  "scipy>=1.14",
+  "matplotlib>=3.9",
+  # Quarto executes a notebook through jupyter, so the build needs a kernel even though no human opens one.
+  #
+  # Held below 7 deliberately. ipykernel 7 is a rewrite of the kernel machinery, and VSCode's Jupyter extension hung indefinitely against it in a Codespace --- "Run All" never started, with no process burning any cpu, because the connection handshake never completed.
+  # Nothing caught it in the sibling MCSBBootcamp_dev repo where it happened, because the build and every local check execute notebooks through nbclient, which is a different path from the one a student uses.
+  # The whole point of this environment is that a student clicks Run and it works, so it tracks what the ecosystem is actually tested against rather than the newest release.
+  "ipykernel>=6.29,<7",
+  # Needed at run time rather than build time: a student opening the .ipynb in JupyterLab inside a Codespace.
+  # It also supplies the `jupyter` command that `quarto check jupyter` looks for.
+  "jupyterlab>=4.2",
+  # The execution cache. `execute: cache: true` in notebooks/_quarto.yml is what stops a notebook's python running once per output format, and this is what implements it.
+  "jupyter-cache>=1.0.1",
+]
+
+[tool.uv]
+package = false

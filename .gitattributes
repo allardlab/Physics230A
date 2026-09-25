@@ -1,0 +1,39 @@
+# Copied to .gitattributes in the published repository by scripts/publish.sh.
+#
+# Named without the leading dot on purpose, for the same reason publish/gitignore is: a real .gitattributes in publish/ would apply to this directory of the source repository rather than to the published one.
+#
+# This is the file that matters more of the two. The published repository is the one students clone, and Git for Windows sets core.autocrlf=true in its installer --- so without this, a student on Windows edits one line of a notebook and gets a diff claiming the whole file changed.
+# The course asks them to read diffs; the first one they read should not be a lie.
+
+# Normalise to LF in the repository whatever the committing machine uses.
+* text=auto eol=lf
+
+# A CR at the end of a shebang makes the kernel look for an interpreter whose name ends in a carriage return, and the error then names a file that visibly exists.
+*.sh    text eol=lf
+
+# The types the published repository is actually made of. It holds the built site plus the environment a Codespace needs, so this list is shorter than the source repository's --- no .lua, .scss or .qmd ever arrives here.
+*.md    text eol=lf
+*.tex   text eol=lf
+*.html  text eol=lf
+*.json  text eol=lf
+*.yml   text eol=lf
+*.toml  text eol=lf
+*.svg   text eol=lf
+*.ipynb text eol=lf
+
+# Binary.
+*.pdf   binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.otf   binary
+
+# The built site. Two things follow from marking it generated, and both are wanted:
+# GitHub stops counting it towards the repository's language bar, which would otherwise read "HTML 99%" --- a fact about Quarto's output rather than about this course --- and it collapses docs/ out of pull request diffs by default.
+#
+# Only this repository has a docs/, which is the whole reason the two .gitattributes files are separate rather than one file copied twice.
+docs/** linguist-generated

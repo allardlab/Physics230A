@@ -1,0 +1,78 @@
+// The environment a student gets when they open the published repository in a GitHub Codespace.
+//
+// The point of it is that we control the image, so "it works on my machine" and "it works for the student" are the same claim: uv sync builds the .venv from the same pyproject.toml and uv.lock that produced the figures baked into the published html.
+//
+// This file is copied into the published repository by scripts/publish.sh and is never built here.
+// There is no Docker on the authoring machine, and nothing local needs one --- local work uses .venv directly, at a few hundred MB against several GB for a container that would only duplicate it.
+{
+  "name": "Physics 230A/146A --- Biological Physics",
+
+  // Matches .python-version at the repo root.
+  // uv would happily fetch its own interpreter, but starting from the right one keeps `uv sync` to a single dependency install on first open.
+  "image": "mcr.microsoft.com/devcontainers/python:1-3.13-bookworm",
+
+  "features": {
+    // JupyterLab, installed the way GitHub documents rather than with pip.
+    //
+    // This is what makes the "Open in JupyterLab" menu entry work.
+    // Installing it with `pip install jupyterlab` in postCreateCommand does put it in the container --- and an interactive terminal finds it --- but the scripts land in ~/.local/bin, which is not on the PATH of the non-interactive launcher GitHub uses, and the entry fails with "we were unable to connect to your codespace in JupyterLab".
+    //
+    // `version: none` because the base image already supplies python; this feature is here only for the JupyterLab it installs.
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "none",
+      "installJupyterlab": true
+    },
+
+    // Only needed to *build* the site --- students running notebooks never invoke it.
+    // Here so that the Codespace is also a working authoring environment, since scripts/deploy.sh is otherwise the one thing about this repository that a Codespace could not do.
+    "ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {}
+  },
+
+  // Belt and braces for the PATH problem described above: anything pip installed for the container user stays reachable, whoever is doing the launching.
+  "remoteEnv": {
+    "PATH": "${containerEnv:PATH}:/home/vscode/.local/bin"
+  },
+
+  // Three steps, and the second and third are what make "Open in JupyterLab" work.
+  //
+  // 1. uv is installed rather than assumed: the base image has pip but no uv.
+  //    `uv sync --frozen` refuses to update the lockfile, so a Codespace can never quietly resolve different versions than the ones that built the site.
+  //
+  // 2. The venv registered as a named kernel, so the JupyterLab installed by the feature above can see it.
+  //    Without this a student opening a notebook in JupyterLab gets the bare system python, which has no numpy, and the notebook fails on its first import while the same file runs perfectly in the VSCode UI beside it.
+  "postCreateCommand": "pip install --no-cache-dir uv && uv sync --frozen && uv run python -m ipykernel install --user --name p230a --display-name 'Python (Physics 230A)'",
+
+  "customizations": {
+    // Opens the README the first time this codespace is opened in the web client.
+    //
+    // There is no URL parameter that opens a particular file in a codespace --- the codespace does not exist yet when the link is clicked --- so a student arriving from the website would otherwise land at a bare file tree and have to find their way to docs/.
+    // The README is written as an index of the notebooks, with relative links that open each one when clicked in the rendered preview, which turns that navigation into a single click.
+    //
+    // First open only, and the web client only.
+    // A student whose default editor is JupyterLab gets JupyterLab's own file browser instead, which already opens at the workspace root.
+    "codespaces": {
+      "openFiles": ["README.md"]
+    },
+
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter",
+        "quarto.quarto"
+      ],
+      // Editor settings are NOT here.
+      // They live in .vscode/settings.json, which reaches a student with a `git pull` rather than a container rebuild --- see the note at the top of that file.
+      // Only the extension list stays, since that genuinely is a property of the container.
+      "settings": {
+        "python.terminal.activateEnvironment": true
+      }
+    }
+  },
+
+  // JupyterLab's default port.
+  // Start it from a terminal in the Codespace with:  uv run jupyter lab
+  "forwardPorts": [8888],
+  "portsAttributes": {
+    "8888": { "label": "JupyterLab", "onAutoForward": "notify" }
+  }
+}
