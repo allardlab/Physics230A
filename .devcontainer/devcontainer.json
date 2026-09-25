@@ -23,24 +23,45 @@
       "installJupyterlab": true
     },
 
-    // Only needed to *build* the site --- students running notebooks never invoke it.
-    // Here so that the Codespace is also a working authoring environment, since scripts/deploy.sh is otherwise the one thing about this repository that a Codespace could not do.
-    "ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {}
+    // Quarto, and with it TinyTeX, so a student can compile the .tex of a problem set or notebook in the Codespace with LaTeX Workshop below.
+    //
+    // `installTinyTex` runs `quarto install tinytex` as the container user, into ~/.TinyTeX; the packages the .tex files need beyond TinyTeX's own set are installed by the `tex` step of postCreateCommand.
+    //
+    // This does not make the Codespace able to run scripts/deploy.sh: that also needs inkscape, to derive each figure's svg, and the Codespace has none.
+    "ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {
+      "installTinyTex": true
+    }
   },
 
   // Belt and braces for the PATH problem described above: anything pip installed for the container user stays reachable, whoever is doing the launching.
+  //
+  // The two TinyTeX directories are there for the same reason.
+  // `quarto install tinytex` links its binaries into ~/bin, which Debian only puts on PATH for a login shell, and LaTeX Workshop launches latexmk from the extension host, which is not one.
+  // Both architectures are named because a Codespace is x86_64 but a local dev container on Apple silicon is not, and a directory that does not exist costs nothing on PATH.
   "remoteEnv": {
-    "PATH": "${containerEnv:PATH}:/home/vscode/.local/bin"
+    "PATH": "${containerEnv:PATH}:/home/vscode/.local/bin:/home/vscode/bin:/home/vscode/.TinyTeX/bin/x86_64-linux:/home/vscode/.TinyTeX/bin/aarch64-linux"
   },
 
-  // Three steps, and the second and third are what make "Open in JupyterLab" work.
+  // Two named steps, which the dev container spec runs in parallel: `python` for the notebooks and `tex` for the .tex files.
+  // Separate so that a CTAN mirror having a bad day can fail the `tex` step without holding up, or failing, the part of the Codespace every student uses.
+  //
+  // `python`, three commands, and the second and third are what make "Open in JupyterLab" work.
   //
   // 1. uv is installed rather than assumed: the base image has pip but no uv.
   //    `uv sync --frozen` refuses to update the lockfile, so a Codespace can never quietly resolve different versions than the ones that built the site.
   //
   // 2. The venv registered as a named kernel, so the JupyterLab installed by the feature above can see it.
   //    Without this a student opening a notebook in JupyterLab gets the bare system python, which has no numpy, and the notebook fails on its first import while the same file runs perfectly in the VSCode UI beside it.
-  "postCreateCommand": "pip install --no-cache-dir uv && uv sync --frozen && uv run python -m ipykernel install --user --name p230a --display-name 'Python (Physics 230A)'",
+  //
+  // `tex`, the LaTeX packages the .tex files load, plus latexmk, which is how LaTeX Workshop builds by default.
+  // The list is measured rather than guessed: every file TeX read while pdflatex compiled PS1, PS5 and python-test-drive, each mapped to its TeX Live package.
+  // Most are already in TinyTeX, and `tlmgr install` of an installed package does nothing, so the list is the whole set rather than only the gaps --- that way it stays right when TinyTeX's own set changes.
+  // Re-measure it if the problem sets' Latex header or Quarto's template changes what they load.
+  // pdflatex rather than xelatex is what gets measured because it is latexmk's default, and the .tex files choose their fonts with `iftex` so either engine works.
+  "postCreateCommand": {
+    "python": "pip install --no-cache-dir uv && uv sync --frozen && uv run python -m ipykernel install --user --name p230a --display-name 'Python (Physics 230A)'",
+    "tex": "$HOME/.TinyTeX/bin/*/tlmgr install latexmk amsfonts amsmath atbegshi atveryend auxhook bigintcalc bitset bookmark booktabs caption cm ec epstopdf-pkg etexcmds etoolbox fancyvrb float fontname footmisc footnotehyper framed gettitlestring graphics graphics-cfg graphics-def hycolor hyperref iftex infwarerr intcalc koma-script kpathsea kvdefinekeys kvoptions kvsetkeys l3backend latex latexconfig letltxmacro lm ltxcmds microtype mptopdf pdfescape pdftexcmds refcount rerunfilecheck tools uniquecounter upquote url xcolor xurl"
+  },
 
   "customizations": {
     // Opens the README the first time this codespace is opened in the web client.
@@ -58,7 +79,10 @@
       "extensions": [
         "ms-python.python",
         "ms-toolsai.jupyter",
-        "quarto.quarto"
+        "quarto.quarto",
+        // Compiles a problem set's or notebook's .tex with the TinyTeX above.
+        // Left on its default recipe, latexmk with pdflatex, which is the one the `tex` step's package list was measured against, so it needs no settings.
+        "james-yu.latex-workshop"
       ],
       // Editor settings are NOT here.
       // They live in .vscode/settings.json, which reaches a student with a `git pull` rather than a container rebuild --- see the note at the top of that file.
