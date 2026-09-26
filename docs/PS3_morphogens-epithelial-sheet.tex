@@ -1,9 +1,6 @@
-% Options for packages loaded elsewhere
-% Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
-%
 \documentclass[
   letterpaper,
   DIV=11,
@@ -23,9 +20,7 @@
 \fi
 \usepackage{lmodern}
 \ifPDFTeX\else
-  % xetex/luatex font selection
 \fi
-% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
   \usepackage[]{microtype}
@@ -41,7 +36,6 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
-% Make \paragraph and \subparagraph free-standing
 \makeatletter
 \ifx\paragraph\undefined\else
   \let\oldparagraph\paragraph
@@ -65,16 +59,13 @@
 \fi
 \makeatother
 
-
 \usepackage{longtable,booktabs,array}
 \newcounter{none} % for unnumbered tables
 \usepackage{calc} % for calculating minipage widths
-% Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
 \makeatletter
 \patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
 \makeatother
-% Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
 \usepackage{graphicx}
@@ -89,67 +80,14 @@
   \else\usebox{\pandoc@box}%
   \fi%
 }
-% Set default figure placement to htbp
 \def\fps@figure{htbp}
 \makeatother
-
-
-
-
 
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
-
-
- 
-
-
-% Page furniture for the problem set PDFs, ported from the exam-documentclass originals this course used before the Quarto migration.
-%
-% Pulled in by every problem set's YAML:
-%
-%   format:
-%     pdf:
-%       include-in-header: header.tex
-%     latex:
-%       include-in-header: header.tex
-%
-% Both keys are needed: pdf and latex are separate formats to Quarto, and with the key on pdf alone the shipped .tex comes out without the header its own .pdf has.
-%
-% The exam class provided \header, \headrule and \footer; Quarto's pdf output uses the default article class, so fancyhdr supplies the same furniture.
-% The exam class's \numpages becomes \pageref*{LastPage}, which needs two passes --- Quarto runs latexmk, so that is already handled.
-% The star matters: plain \pageref is a hyperref link, so the page count comes out link-blue.
-%
-% ---------------------------------------------------------------------------
-% ADAPTING THIS FOR ANOTHER COURSE: change the two strings below, nothing else.
-% ---------------------------------------------------------------------------
-
-% \usepackage{fancyhdr}
-% \usepackage{lastpage}
-
-% \pagestyle{fancy}
-% \fancyhf{}
-
-% \fancyhead[L]{Physics 230A/146A: Biological Physics}   % <- course name
-% \fancyfoot[L]{\textit{jun.allard@uci.edu}}             % <- contact
-
-% \fancyfoot[R]{Page \thepage\ of \pageref*{LastPage}}
-
-% \renewcommand{\headrulewidth}{0.4pt}
-% \renewcommand{\footrulewidth}{0pt}
-
-% % Quarto's title block starts the document with \maketitle, which forces the plain pagestyle on the first page and would otherwise drop the header exactly where it is most wanted.
-% \fancypagestyle{plain}{%
-%   \fancyhf{}%
-%   \fancyhead[L]{Physics 230A/146A: Biological Physics}%
-%   \fancyfoot[L]{\textit{jun.allard@uci.edu}}%
-%   \fancyfoot[R]{Page \thepage\ of \pageref*{LastPage}}%
-%   \renewcommand{\headrulewidth}{0.4pt}%
-%   \renewcommand{\footrulewidth}{0pt}%
-% }
 \KOMAoption{captions}{tableheading}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
@@ -206,16 +144,15 @@
   pdfcreator={LaTeX via pandoc}}
 
 \ifXeTeX
-\special{pdf:trailerid [ <a60e456f0f0e6e5f7d61cc8130d86b67> <a60e456f0f0e6e5f7d61cc8130d86b67> ]}
+\special{pdf:trailerid [ <5ae01783c4a3995d0c8c312e15191947> <5ae01783c4a3995d0c8c312e15191947> ]}
 \fi
 \ifPDFTeX
 \pdftrailerid{}
-\pdftrailer{/ID [ <a60e456f0f0e6e5f7d61cc8130d86b67> <a60e456f0f0e6e5f7d61cc8130d86b67> ]}
+\pdftrailer{/ID [ <5ae01783c4a3995d0c8c312e15191947> <5ae01783c4a3995d0c8c312e15191947> ]}
 \fi
 \ifLuaTeX
-\pdfvariable trailerid {[ <a60e456f0f0e6e5f7d61cc8130d86b67> <a60e456f0f0e6e5f7d61cc8130d86b67> ]}
+\pdfvariable trailerid {[ <5ae01783c4a3995d0c8c312e15191947> <5ae01783c4a3995d0c8c312e15191947> ]}
 \fi
-
 
 \title{Problem Set 3: Morphogens in an epithelial sheet}
 \usepackage{etoolbox}
@@ -231,19 +168,15 @@
 \maketitle
 
 
-Many tissues are comprised of two-dimensional sheets of cells, including
-epithelial sheets that line the lungs, gut, and blood vessels. The cells
-in these tissues communicate by emitting and receiving small diffusive
-molecules called ligands.
+Many tissues are comprised of two-dimensional sheets of cells, including epithelial sheets that line the lungs, gut, and blood vessels.
+The cells in these tissues communicate by emitting and receiving small diffusive molecules called ligands.
 
 \begin{center}
 \includegraphics[width=10cm,height=\textheight,keepaspectratio]{fig_morphogens-epithelial-sheet.pdf}
 \end{center}
 
-For mathematical convenience, assume the epithelial sheet is an annulus
-(circular disk with a circular hole removed from the center) with inner
-radius \(R_0\) and outer radius \(R_\mathrm{max}\). Assume that the
-ligand diffuses only along the two-dimensional surface, so that
+For mathematical convenience, assume the epithelial sheet is an annulus (circular disk with a circular hole removed from the center) with inner radius \(R_0\) and outer radius \(R_\mathrm{max}\).
+Assume that the ligand diffuses only along the two-dimensional surface, so that
 
 \[
 \frac{\partial c}{\partial t} = D \nabla^2 c \qquad R_0 < r < R_\mathrm{max}
@@ -255,8 +188,7 @@ where in two dimensions
 \nabla^2 c(r,\theta) = \frac{1}{r}\frac{\partial}{\partial r} \left(r \frac{\partial c}{\partial r} \right) + \frac{1}{r^2}\frac{\partial^2 c}{\partial \theta^2}.
 \]
 
-Suppose the source of diffusible ligand is emitted from the center ring
-at \(r=R_{0}\), so that
+Suppose the source of diffusible ligand is emitted from the center ring at \(r=R_{0}\), so that
 
 \[
 \begin{aligned}
@@ -265,25 +197,21 @@ c(R_0,t) &= c_0
 \end{aligned}
 \]
 
-where \(J(r,t)\) is the flux in the radial direction. Assume \(J_0>0\)
-so that it is, indeed, a source of ligand.
+where \(J(r,t)\) is the flux in the radial direction.
+Assume \(J_0>0\) so that it is, indeed, a source of ligand.
 
-Find the steady-state ligand concentration under the following
-assumptions:
+Find the steady-state ligand concentration under the following assumptions:
 
 \begin{enumerate}
 \def\labelenumi{\roman{enumi}.}
 \tightlist
 \item
-  If the ligand does not bind (or binds and then detaches rapidly) from
-  the other cells in the sheet
+  If the ligand does not bind (or binds and then detaches rapidly) from the other cells in the sheet
 \item
-  If the ligand binds irreversibly to other cells at a constant
-  internalization rate, \(d(r,t)=\gamma\)
+  If the ligand binds irreversibly to other cells at a constant internalization rate, \(d(r,t)=\gamma\)
 \end{enumerate}
 
-In the first case, (i), is the flux at \(r=R_0\) equal to the flux at
-\(r=R_\mathrm{max}\)?
+In the first case, (i), is the flux at \(r=R_0\) equal to the flux at \(r=R_\mathrm{max}\)?
 
 
 

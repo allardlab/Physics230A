@@ -2,7 +2,7 @@
 
 Course materials for a graduate course in the Mathematical, Computational and Systems Biology program.
 
-<!-- This link is the eventual home of the website and does not resolve until GitHub Pages is switched on for allardlab/Physics230A: branch `main`, folder `/docs`.
+<!-- Served by GitHub Pages for allardlab/Physics230A, branch `main`, folder `/docs`.
 It needs no CNAME and no change here: the allardlab account's user site carries the www.allardlab.com domain, and GitHub serves every project site of that account under it. -->
 **[Open the course website →](https://www.allardlab.com/Physics230A/)**
 

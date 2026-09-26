@@ -1,9 +1,6 @@
-% Options for packages loaded elsewhere
-% Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
-%
 \documentclass[
   letterpaper,
   DIV=11,
@@ -23,9 +20,7 @@
 \fi
 \usepackage{lmodern}
 \ifPDFTeX\else
-  % xetex/luatex font selection
 \fi
-% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
   \usepackage[]{microtype}
@@ -41,7 +36,6 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
-% Make \paragraph and \subparagraph free-standing
 \makeatletter
 \ifx\paragraph\undefined\else
   \let\oldparagraph\paragraph
@@ -65,16 +59,13 @@
 \fi
 \makeatother
 
-
 \usepackage{longtable,booktabs,array}
 \newcounter{none} % for unnumbered tables
 \usepackage{calc} % for calculating minipage widths
-% Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
 \makeatletter
 \patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
 \makeatother
-% Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
 \usepackage{graphicx}
@@ -89,67 +80,14 @@
   \else\usebox{\pandoc@box}%
   \fi%
 }
-% Set default figure placement to htbp
 \def\fps@figure{htbp}
 \makeatother
-
-
-
-
 
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
-
-
- 
-
-
-% Page furniture for the problem set PDFs, ported from the exam-documentclass originals this course used before the Quarto migration.
-%
-% Pulled in by every problem set's YAML:
-%
-%   format:
-%     pdf:
-%       include-in-header: header.tex
-%     latex:
-%       include-in-header: header.tex
-%
-% Both keys are needed: pdf and latex are separate formats to Quarto, and with the key on pdf alone the shipped .tex comes out without the header its own .pdf has.
-%
-% The exam class provided \header, \headrule and \footer; Quarto's pdf output uses the default article class, so fancyhdr supplies the same furniture.
-% The exam class's \numpages becomes \pageref*{LastPage}, which needs two passes --- Quarto runs latexmk, so that is already handled.
-% The star matters: plain \pageref is a hyperref link, so the page count comes out link-blue.
-%
-% ---------------------------------------------------------------------------
-% ADAPTING THIS FOR ANOTHER COURSE: change the two strings below, nothing else.
-% ---------------------------------------------------------------------------
-
-% \usepackage{fancyhdr}
-% \usepackage{lastpage}
-
-% \pagestyle{fancy}
-% \fancyhf{}
-
-% \fancyhead[L]{Physics 230A/146A: Biological Physics}   % <- course name
-% \fancyfoot[L]{\textit{jun.allard@uci.edu}}             % <- contact
-
-% \fancyfoot[R]{Page \thepage\ of \pageref*{LastPage}}
-
-% \renewcommand{\headrulewidth}{0.4pt}
-% \renewcommand{\footrulewidth}{0pt}
-
-% % Quarto's title block starts the document with \maketitle, which forces the plain pagestyle on the first page and would otherwise drop the header exactly where it is most wanted.
-% \fancypagestyle{plain}{%
-%   \fancyhf{}%
-%   \fancyhead[L]{Physics 230A/146A: Biological Physics}%
-%   \fancyfoot[L]{\textit{jun.allard@uci.edu}}%
-%   \fancyfoot[R]{Page \thepage\ of \pageref*{LastPage}}%
-%   \renewcommand{\headrulewidth}{0.4pt}%
-%   \renewcommand{\footrulewidth}{0pt}%
-% }
 \KOMAoption{captions}{tableheading}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
@@ -206,16 +144,15 @@
   pdfcreator={LaTeX via pandoc}}
 
 \ifXeTeX
-\special{pdf:trailerid [ <ac479e7645c900e343ee3ecc5174c6cf> <ac479e7645c900e343ee3ecc5174c6cf> ]}
+\special{pdf:trailerid [ <715288fe099ea0bed0e5c0b1cb51345e> <715288fe099ea0bed0e5c0b1cb51345e> ]}
 \fi
 \ifPDFTeX
 \pdftrailerid{}
-\pdftrailer{/ID [ <ac479e7645c900e343ee3ecc5174c6cf> <ac479e7645c900e343ee3ecc5174c6cf> ]}
+\pdftrailer{/ID [ <715288fe099ea0bed0e5c0b1cb51345e> <715288fe099ea0bed0e5c0b1cb51345e> ]}
 \fi
 \ifLuaTeX
-\pdfvariable trailerid {[ <ac479e7645c900e343ee3ecc5174c6cf> <ac479e7645c900e343ee3ecc5174c6cf> ]}
+\pdfvariable trailerid {[ <715288fe099ea0bed0e5c0b1cb51345e> <715288fe099ea0bed0e5c0b1cb51345e> ]}
 \fi
-
 
 \title{Problem Set 2: Viral entry}
 \usepackage{etoolbox}
@@ -231,26 +168,19 @@
 \maketitle
 
 
-Membranes, including the plasma membrane that constitutes the outer
-envelope of eukaryotic cells, are two-dimensional sheets composed of
-lipid bilayers that resist mechanical deformation, like bending. The
-bending energy of a surface can be modeled as
+Membranes, including the plasma membrane that constitutes the outer envelope of eukaryotic cells, are two-dimensional sheets composed of lipid bilayers that resist mechanical deformation, like bending.
+The bending energy of a surface can be modeled as
 
 \[
 E = \iint \frac{1}{2} B \kappa^2 \, dA
 \]
 
-where \(B=100\,\mathrm{pN}\,\mathrm{nm}\) is the bending modulus (note
-it has units of \(\mathrm{pN}\,\mathrm{nm}\), unlike for rods and
-filaments), and \(\kappa\) is the mean curvature, and the integral
-\(\iint dA\) is over the membrane's surface. For a sphere,
-\(\kappa = 2/R\) where \(R\) is the radius of the sphere. For a
-cylinder, \(\kappa = 1/R\) where \(R\) is the radius of the cylinder.
+where \(B=100\,\mathrm{pN}\,\mathrm{nm}\) is the bending modulus (note it has units of \(\mathrm{pN}\,\mathrm{nm}\), unlike for rods and filaments), and \(\kappa\) is the mean curvature, and the integral \(\iint dA\) is over the membrane's surface.
+For a sphere, \(\kappa = 2/R\) where \(R\) is the radius of the sphere.
+For a cylinder, \(\kappa = 1/R\) where \(R\) is the radius of the cylinder.
 
-Viruses spread between cells as virus particles, or virions. These
-virions are not able to passively enter their host cells; in many cases,
-they must hijack the cell's endocytic machinery to help them actively
-gain entry.
+Viruses spread between cells as virus particles, or virions.
+These virions are not able to passively enter their host cells; in many cases, they must hijack the cell's endocytic machinery to help them actively gain entry.
 
 \begin{center}
 \includegraphics[width=10cm,height=\textheight,keepaspectratio]{fig_viral-entry.pdf}
@@ -260,16 +190,12 @@ gain entry.
 \def\labelenumi{\roman{enumi}.}
 \tightlist
 \item
-  Suppose a viral capsid is approximately spherical with radius
-  \(R=200\,\mathrm{nm}\). How much energy is required to bend the plasma
-  membrane to get the capsid half-way into the host cell?
+  Suppose a viral capsid is approximately spherical with radius \(R=200\,\mathrm{nm}\).
+  How much energy is required to bend the plasma membrane to get the capsid half-way into the host cell?
 \item
-  Suppose the cell is under turgor pressure of
-  \(P=0.01\,\mathrm{pN}/\mathrm{nm}^2\). Now, locally changing the
-  volume of the cytoplasm results in an increase in energy
-  \(\Delta E = PV\), in addition to the energy required to bend the
-  membrane. How much energy (bending plus volume change) is required to
-  get the capsid half-way into the host cell?
+  Suppose the cell is under turgor pressure of \(P=0.01\,\mathrm{pN}/\mathrm{nm}^2\).
+  Now, locally changing the volume of the cytoplasm results in an increase in energy \(\Delta E = PV\), in addition to the energy required to bend the membrane.
+  How much energy (bending plus volume change) is required to get the capsid half-way into the host cell?
 \end{enumerate}
 
 

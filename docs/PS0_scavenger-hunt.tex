@@ -1,9 +1,6 @@
-% Options for packages loaded elsewhere
-% Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
-%
 \documentclass[
   letterpaper,
   DIV=11,
@@ -23,9 +20,7 @@
 \fi
 \usepackage{lmodern}
 \ifPDFTeX\else
-  % xetex/luatex font selection
 \fi
-% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
   \usepackage[]{microtype}
@@ -41,7 +36,6 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
-% Make \paragraph and \subparagraph free-standing
 \makeatletter
 \ifx\paragraph\undefined\else
   \let\oldparagraph\paragraph
@@ -65,16 +59,13 @@
 \fi
 \makeatother
 
-
 \usepackage{longtable,booktabs,array}
 \newcounter{none} % for unnumbered tables
 \usepackage{calc} % for calculating minipage widths
-% Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
 \makeatletter
 \patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
 \makeatother
-% Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
 \usepackage{graphicx}
@@ -89,67 +80,14 @@
   \else\usebox{\pandoc@box}%
   \fi%
 }
-% Set default figure placement to htbp
 \def\fps@figure{htbp}
 \makeatother
-
-
-
-
 
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
-
-
- 
-
-
-% Page furniture for the problem set PDFs, ported from the exam-documentclass originals this course used before the Quarto migration.
-%
-% Pulled in by every problem set's YAML:
-%
-%   format:
-%     pdf:
-%       include-in-header: header.tex
-%     latex:
-%       include-in-header: header.tex
-%
-% Both keys are needed: pdf and latex are separate formats to Quarto, and with the key on pdf alone the shipped .tex comes out without the header its own .pdf has.
-%
-% The exam class provided \header, \headrule and \footer; Quarto's pdf output uses the default article class, so fancyhdr supplies the same furniture.
-% The exam class's \numpages becomes \pageref*{LastPage}, which needs two passes --- Quarto runs latexmk, so that is already handled.
-% The star matters: plain \pageref is a hyperref link, so the page count comes out link-blue.
-%
-% ---------------------------------------------------------------------------
-% ADAPTING THIS FOR ANOTHER COURSE: change the two strings below, nothing else.
-% ---------------------------------------------------------------------------
-
-% \usepackage{fancyhdr}
-% \usepackage{lastpage}
-
-% \pagestyle{fancy}
-% \fancyhf{}
-
-% \fancyhead[L]{Physics 230A/146A: Biological Physics}   % <- course name
-% \fancyfoot[L]{\textit{jun.allard@uci.edu}}             % <- contact
-
-% \fancyfoot[R]{Page \thepage\ of \pageref*{LastPage}}
-
-% \renewcommand{\headrulewidth}{0.4pt}
-% \renewcommand{\footrulewidth}{0pt}
-
-% % Quarto's title block starts the document with \maketitle, which forces the plain pagestyle on the first page and would otherwise drop the header exactly where it is most wanted.
-% \fancypagestyle{plain}{%
-%   \fancyhf{}%
-%   \fancyhead[L]{Physics 230A/146A: Biological Physics}%
-%   \fancyfoot[L]{\textit{jun.allard@uci.edu}}%
-%   \fancyfoot[R]{Page \thepage\ of \pageref*{LastPage}}%
-%   \renewcommand{\headrulewidth}{0.4pt}%
-%   \renewcommand{\footrulewidth}{0pt}%
-% }
 \KOMAoption{captions}{tableheading}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
@@ -206,16 +144,15 @@
   pdfcreator={LaTeX via pandoc}}
 
 \ifXeTeX
-\special{pdf:trailerid [ <b7fefd1bc516f19a7d1e4202fee55269> <b7fefd1bc516f19a7d1e4202fee55269> ]}
+\special{pdf:trailerid [ <4c0023ef876d4ac9b646497d130df979> <4c0023ef876d4ac9b646497d130df979> ]}
 \fi
 \ifPDFTeX
 \pdftrailerid{}
-\pdftrailer{/ID [ <b7fefd1bc516f19a7d1e4202fee55269> <b7fefd1bc516f19a7d1e4202fee55269> ]}
+\pdftrailer{/ID [ <4c0023ef876d4ac9b646497d130df979> <4c0023ef876d4ac9b646497d130df979> ]}
 \fi
 \ifLuaTeX
-\pdfvariable trailerid {[ <b7fefd1bc516f19a7d1e4202fee55269> <b7fefd1bc516f19a7d1e4202fee55269> ]}
+\pdfvariable trailerid {[ <4c0023ef876d4ac9b646497d130df979> <4c0023ef876d4ac9b646497d130df979> ]}
 \fi
-
 
 \title{Problem Set 0: Scavenger hunt}
 \usepackage{etoolbox}
@@ -231,13 +168,12 @@
 \maketitle
 
 
-Find values for the following biological quantities. You may use Google,
-Wikipedia, textbooks, peer-reviewed papers, large language models, or
-anything else, but you must cite your sources\footnote{and those sources
-  must have provenance (i.e., they can cite their sources)}. One
-valuable source is: \texttt{bionumbers.org}. In cases where answers need
-to be qualified, do so. Are there ranges? Are there a few exceptions or
-many exceptions? Are these order-of-magnitude estimates?
+Find values for the following biological quantities.
+You may use Google, Wikipedia, textbooks, peer-reviewed papers, large language models, or anything else, but you must cite your sources\footnote{and those sources must have provenance (i.e., they can cite their sources)}.
+One valuable source is: \texttt{bionumbers.org}.
+In cases where answers need to be qualified, do so.
+Are there ranges? Are there a few exceptions or many exceptions?
+Are these order-of-magnitude estimates?
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -283,8 +219,7 @@ The time for (in seconds or other SI unit):
 \item
   Turnover of cells in the human body
 \item
-  The generation time (time between divisions) of a bacterium in lab
-  conditions
+  The generation time (time between divisions) of a bacterium in lab conditions
 \item
   Transcription of one DNA basepair to RNA
 \item
@@ -304,11 +239,9 @@ The energy of:
 \item
   The reaction ATP \(\rightarrow\) ADP-Pi
 \item
-  The thermal energy unit \(k_B T\) (where \(k_B\) is Boltzmann's
-  constant and \(T\) is the temperature from absolute zero)
+  The thermal energy unit \(k_B T\) (where \(k_B\) is Boltzmann's constant and \(T\) is the temperature from absolute zero)
 \item
-  Moving one electron against the electric field across the membrane of
-  a cell
+  Moving one electron against the electric field across the membrane of a cell
 \end{enumerate}
 
 

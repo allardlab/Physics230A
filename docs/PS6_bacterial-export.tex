@@ -1,9 +1,6 @@
-% Options for packages loaded elsewhere
-% Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
-%
 \documentclass[
   letterpaper,
   DIV=11,
@@ -23,9 +20,7 @@
 \fi
 \usepackage{lmodern}
 \ifPDFTeX\else
-  % xetex/luatex font selection
 \fi
-% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
   \usepackage[]{microtype}
@@ -41,7 +36,6 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
-% Make \paragraph and \subparagraph free-standing
 \makeatletter
 \ifx\paragraph\undefined\else
   \let\oldparagraph\paragraph
@@ -65,16 +59,13 @@
 \fi
 \makeatother
 
-
 \usepackage{longtable,booktabs,array}
 \newcounter{none} % for unnumbered tables
 \usepackage{calc} % for calculating minipage widths
-% Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
 \makeatletter
 \patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
 \makeatother
-% Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
 \usepackage{graphicx}
@@ -89,67 +80,14 @@
   \else\usebox{\pandoc@box}%
   \fi%
 }
-% Set default figure placement to htbp
 \def\fps@figure{htbp}
 \makeatother
-
-
-
-
 
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
-
-
- 
-
-
-% Page furniture for the problem set PDFs, ported from the exam-documentclass originals this course used before the Quarto migration.
-%
-% Pulled in by every problem set's YAML:
-%
-%   format:
-%     pdf:
-%       include-in-header: header.tex
-%     latex:
-%       include-in-header: header.tex
-%
-% Both keys are needed: pdf and latex are separate formats to Quarto, and with the key on pdf alone the shipped .tex comes out without the header its own .pdf has.
-%
-% The exam class provided \header, \headrule and \footer; Quarto's pdf output uses the default article class, so fancyhdr supplies the same furniture.
-% The exam class's \numpages becomes \pageref*{LastPage}, which needs two passes --- Quarto runs latexmk, so that is already handled.
-% The star matters: plain \pageref is a hyperref link, so the page count comes out link-blue.
-%
-% ---------------------------------------------------------------------------
-% ADAPTING THIS FOR ANOTHER COURSE: change the two strings below, nothing else.
-% ---------------------------------------------------------------------------
-
-% \usepackage{fancyhdr}
-% \usepackage{lastpage}
-
-% \pagestyle{fancy}
-% \fancyhf{}
-
-% \fancyhead[L]{Physics 230A/146A: Biological Physics}   % <- course name
-% \fancyfoot[L]{\textit{jun.allard@uci.edu}}             % <- contact
-
-% \fancyfoot[R]{Page \thepage\ of \pageref*{LastPage}}
-
-% \renewcommand{\headrulewidth}{0.4pt}
-% \renewcommand{\footrulewidth}{0pt}
-
-% % Quarto's title block starts the document with \maketitle, which forces the plain pagestyle on the first page and would otherwise drop the header exactly where it is most wanted.
-% \fancypagestyle{plain}{%
-%   \fancyhf{}%
-%   \fancyhead[L]{Physics 230A/146A: Biological Physics}%
-%   \fancyfoot[L]{\textit{jun.allard@uci.edu}}%
-%   \fancyfoot[R]{Page \thepage\ of \pageref*{LastPage}}%
-%   \renewcommand{\headrulewidth}{0.4pt}%
-%   \renewcommand{\footrulewidth}{0pt}%
-% }
 \KOMAoption{captions}{tableheading}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
@@ -206,16 +144,15 @@
   pdfcreator={LaTeX via pandoc}}
 
 \ifXeTeX
-\special{pdf:trailerid [ <a600807f7e03b8909a5e905c78e7d4e3> <a600807f7e03b8909a5e905c78e7d4e3> ]}
+\special{pdf:trailerid [ <37fb224a86b56e1843a79d1be7d15ae0> <37fb224a86b56e1843a79d1be7d15ae0> ]}
 \fi
 \ifPDFTeX
 \pdftrailerid{}
-\pdftrailer{/ID [ <a600807f7e03b8909a5e905c78e7d4e3> <a600807f7e03b8909a5e905c78e7d4e3> ]}
+\pdftrailer{/ID [ <37fb224a86b56e1843a79d1be7d15ae0> <37fb224a86b56e1843a79d1be7d15ae0> ]}
 \fi
 \ifLuaTeX
-\pdfvariable trailerid {[ <a600807f7e03b8909a5e905c78e7d4e3> <a600807f7e03b8909a5e905c78e7d4e3> ]}
+\pdfvariable trailerid {[ <37fb224a86b56e1843a79d1be7d15ae0> <37fb224a86b56e1843a79d1be7d15ae0> ]}
 \fi
-
 
 \title{Problem Set 6: Bacterial export}
 \usepackage{etoolbox}
@@ -231,8 +168,7 @@
 \maketitle
 
 
-Suppose a molecule is diffusing in a two-dimensional wedge-shaped region
-with no-flux boundaries
+Suppose a molecule is diffusing in a two-dimensional wedge-shaped region with no-flux boundaries
 
 \[
 \begin{aligned}
@@ -241,11 +177,10 @@ y_\mathrm{bottom}(x) &= -mx-b
 \end{aligned}
 \]
 
-for \(0<x<L\), where \(m,b,L>0\) are constants. If the diffusion
-coefficient is uniform and there are no external forces acting on the
-molecule, it will tend to move to the right. In this question we ask,
-can this diffusive motion counteract a left-pulling force? And if so,
-what is the magnitude of this force?
+for \(0<x<L\), where \(m,b,L>0\) are constants.
+If the diffusion coefficient is uniform and there are no external forces acting on the molecule, it will tend to move to the right.
+In this question we ask, can this diffusive motion counteract a left-pulling force?
+And if so, what is the magnitude of this force?
 
 \begin{center}
 \includegraphics[width=8cm,height=\textheight,keepaspectratio]{fig_bacterial-export.pdf}
@@ -255,39 +190,32 @@ what is the magnitude of this force?
 \def\labelenumi{\roman{enumi}.}
 \tightlist
 \item
-  The microstates of this system are the \((x,y)\) coordinates of the
-  molecule. Define a macrostate as the set of \((x,y)\) coordinates with
-  a fixed \(x\), i.e., vertical slices. Thus we can label macrostates as
-  \(x\) for \(0<x<L\). What is the entropy \(S(x)\) of each macrostate
-  \(x\)?
+  The microstates of this system are the \((x,y)\) coordinates of the molecule.
+  Define a macrostate as the set of \((x,y)\) coordinates with a fixed \(x\), i.e., vertical slices.
+  Thus we can label macrostates as \(x\) for \(0<x<L\).
+  What is the entropy \(S(x)\) of each macrostate \(x\)?
 \item
-  Assuming no external forces are acting on the molecule --- only
-  diffusion --- write the free energy \(G(x) = -TS(x)\).
+  Assuming no external forces are acting on the molecule --- only diffusion --- write the free energy \(G(x) = -TS(x)\).
 \item
-  A gradient in an energy functional corresponds to a force. This is
-  true for purely enthalpic energies \(E(x)\) and for free energies
-  \(G(x)\). What is the force \(F(x)\) pulling the molecule? It will
-  depend on \(x\). Which direction does the force pull?
+  A gradient in an energy functional corresponds to a force.
+  This is true for purely enthalpic energies \(E(x)\) and for free energies \(G(x)\).
+  What is the force \(F(x)\) pulling the molecule?
+  It will depend on \(x\).
+  Which direction does the force pull?
 \end{enumerate}
 
-Proteins on the surfaces of cells must be exported from the cell
-interior. Some unfolded protein in gram-positive bacteria are exported
-by exploiting entropic forces similar to this problem\footnote{Halladin
-  et al., ``Entropy-driven translocation of disordered proteins through
-  the Gram-positive bacterial cell wall'', \emph{Nature Microbiology}
-  2021}: The polymer is held between a region of high entropy and low
-entropy, and is effectively sucked into the high-entropy region.
+Proteins on the surfaces of cells must be exported from the cell interior.
+Some unfolded protein in gram-positive bacteria are exported by exploiting entropic forces similar to this problem\footnote{Halladin et al., ``Entropy-driven translocation of disordered proteins through the Gram-positive bacterial cell wall'', \emph{Nature Microbiology} 2021}: The polymer is held between a region of high entropy and low entropy, and is effectively sucked into the high-entropy region.
 
 \begin{enumerate}
 \def\labelenumi{\roman{enumi}.}
 \setcounter{enumi}{3}
 \tightlist
 \item
-  Assume \(b=2\,\mathrm{nm}\), \(L=100\,\mathrm{nm}\) (the thickness of
-  the gram-positive bacterial cell wall), and \(m=1\). Use the value of
-  \(k_BT\) at 30\(^\circ\)C (note you need to convert temperature to
-  Kelvins). The force you found in (iii) depends on \(x\). Where is this
-  force largest, and what is its magnitude?
+  Assume \(b=2\,\mathrm{nm}\), \(L=100\,\mathrm{nm}\) (the thickness of the gram-positive bacterial cell wall), and \(m=1\).
+  Use the value of \(k_BT\) at 30\(^\circ\)C (note you need to convert temperature to Kelvins).
+  The force you found in (iii) depends on \(x\).
+  Where is this force largest, and what is its magnitude?
 \end{enumerate}
 
 

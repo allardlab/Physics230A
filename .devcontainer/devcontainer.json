@@ -66,16 +66,11 @@
   },
 
   "customizations": {
-    // Opens the README the first time this codespace is opened in the web client.
+    // Deliberately NO `codespaces: { openFiles: [...] }` here, though the README is meant to open first.
     //
-    // There is no URL parameter that opens a particular file in a codespace --- the codespace does not exist yet when the link is clicked --- so a student arriving from the website would otherwise land at a bare file tree and have to find their way to docs/.
-    // The README is written as an index of the notebooks, with relative links that open each one when clicked in the rendered preview, which turns that navigation into a single click.
-    //
-    // First open only, and the web client only.
-    // A student whose default editor is JupyterLab gets JupyterLab's own file browser instead, which already opens at the workspace root.
-    "codespaces": {
-      "openFiles": ["README.md"]
-    },
+    // openFiles opens a file as a plain text editor, so the README arrived as raw markdown, whose links cannot be clicked --- and it fires first, pre-empting `workbench.startupEditor: "readme"` in .vscode/settings.json, which is the setting that opens it rendered.
+    // The README is the navigation surface, an index of the notebooks and the problem sets' .tex files, so the rendered view is the point, and startupEditor alone gives it.
+    // Found first in ../MCSBBootcamp_dev, and then again here from a Codespace that opened on the markdown source.
 
     "vscode": {
       "extensions": [
@@ -89,8 +84,13 @@
       // Editor settings are NOT here.
       // They live in .vscode/settings.json, which reaches a student with a `git pull` rather than a container rebuild --- see the note at the top of that file.
       // Only the extension list stays, since that genuinely is a property of the container.
+      // The one exception to "editor settings live in .vscode/settings.json": the AI chat panel, set in both places.
+      // Settings given here are machine settings, applied when the container is created, whereas the workspace file is read only once the window has opened --- and a Codespace was seen opening with the chat panel showing on the right despite the workspace file hiding it.
+      // Other educators report the same, and that the panel can still flash up while the codespace is first building; nothing configurable reaches that early.
       "settings": {
-        "python.terminal.activateEnvironment": true
+        "python.terminal.activateEnvironment": true,
+        "chat.disableAIFeatures": true,
+        "workbench.secondarySideBar.defaultVisibility": "hidden"
       }
     }
   },

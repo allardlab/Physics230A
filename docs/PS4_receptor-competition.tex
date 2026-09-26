@@ -1,9 +1,6 @@
-% Options for packages loaded elsewhere
-% Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
-%
 \documentclass[
   letterpaper,
   DIV=11,
@@ -23,9 +20,7 @@
 \fi
 \usepackage{lmodern}
 \ifPDFTeX\else
-  % xetex/luatex font selection
 \fi
-% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
   \usepackage[]{microtype}
@@ -41,7 +36,6 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
-% Make \paragraph and \subparagraph free-standing
 \makeatletter
 \ifx\paragraph\undefined\else
   \let\oldparagraph\paragraph
@@ -65,16 +59,13 @@
 \fi
 \makeatother
 
-
 \usepackage{longtable,booktabs,array}
 \newcounter{none} % for unnumbered tables
 \usepackage{calc} % for calculating minipage widths
-% Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
 \makeatletter
 \patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
 \makeatother
-% Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
 \usepackage{graphicx}
@@ -89,67 +80,14 @@
   \else\usebox{\pandoc@box}%
   \fi%
 }
-% Set default figure placement to htbp
 \def\fps@figure{htbp}
 \makeatother
-
-
-
-
 
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
-
-
- 
-
-
-% Page furniture for the problem set PDFs, ported from the exam-documentclass originals this course used before the Quarto migration.
-%
-% Pulled in by every problem set's YAML:
-%
-%   format:
-%     pdf:
-%       include-in-header: header.tex
-%     latex:
-%       include-in-header: header.tex
-%
-% Both keys are needed: pdf and latex are separate formats to Quarto, and with the key on pdf alone the shipped .tex comes out without the header its own .pdf has.
-%
-% The exam class provided \header, \headrule and \footer; Quarto's pdf output uses the default article class, so fancyhdr supplies the same furniture.
-% The exam class's \numpages becomes \pageref*{LastPage}, which needs two passes --- Quarto runs latexmk, so that is already handled.
-% The star matters: plain \pageref is a hyperref link, so the page count comes out link-blue.
-%
-% ---------------------------------------------------------------------------
-% ADAPTING THIS FOR ANOTHER COURSE: change the two strings below, nothing else.
-% ---------------------------------------------------------------------------
-
-% \usepackage{fancyhdr}
-% \usepackage{lastpage}
-
-% \pagestyle{fancy}
-% \fancyhf{}
-
-% \fancyhead[L]{Physics 230A/146A: Biological Physics}   % <- course name
-% \fancyfoot[L]{\textit{jun.allard@uci.edu}}             % <- contact
-
-% \fancyfoot[R]{Page \thepage\ of \pageref*{LastPage}}
-
-% \renewcommand{\headrulewidth}{0.4pt}
-% \renewcommand{\footrulewidth}{0pt}
-
-% % Quarto's title block starts the document with \maketitle, which forces the plain pagestyle on the first page and would otherwise drop the header exactly where it is most wanted.
-% \fancypagestyle{plain}{%
-%   \fancyhf{}%
-%   \fancyhead[L]{Physics 230A/146A: Biological Physics}%
-%   \fancyfoot[L]{\textit{jun.allard@uci.edu}}%
-%   \fancyfoot[R]{Page \thepage\ of \pageref*{LastPage}}%
-%   \renewcommand{\headrulewidth}{0.4pt}%
-%   \renewcommand{\footrulewidth}{0pt}%
-% }
 \KOMAoption{captions}{tableheading}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
@@ -206,16 +144,15 @@
   pdfcreator={LaTeX via pandoc}}
 
 \ifXeTeX
-\special{pdf:trailerid [ <f519be39f8f4b2e186c2bc41705370d3> <f519be39f8f4b2e186c2bc41705370d3> ]}
+\special{pdf:trailerid [ <55dd56121fc11c12abcc50e41411659a> <55dd56121fc11c12abcc50e41411659a> ]}
 \fi
 \ifPDFTeX
 \pdftrailerid{}
-\pdftrailer{/ID [ <f519be39f8f4b2e186c2bc41705370d3> <f519be39f8f4b2e186c2bc41705370d3> ]}
+\pdftrailer{/ID [ <55dd56121fc11c12abcc50e41411659a> <55dd56121fc11c12abcc50e41411659a> ]}
 \fi
 \ifLuaTeX
-\pdfvariable trailerid {[ <f519be39f8f4b2e186c2bc41705370d3> <f519be39f8f4b2e186c2bc41705370d3> ]}
+\pdfvariable trailerid {[ <55dd56121fc11c12abcc50e41411659a> <55dd56121fc11c12abcc50e41411659a> ]}
 \fi
-
 
 \title{Problem Set 4: How much do receptors compete?}
 \usepackage{etoolbox}
@@ -231,31 +168,16 @@
 \maketitle
 
 
-A sphere of radius \(R\) that is a perfect absorber, in a far-field
-concentration \(c_{\infty}\) of particles with diffusion coefficient
-\(D\), will absorb those particles at a rate
-\(\lambda_\mathrm{perfect} = 4\pi D R c_{\infty}\). This implies that a
-cell of radius \(R\) that were totally covered in receptors for a
-particular ligand would interact with the ligand at rate
-\(\lambda_\mathrm{perfect}\).
+A sphere of radius \(R\) that is a perfect absorber, in a far-field concentration \(c_{\infty}\) of particles with diffusion coefficient \(D\), will absorb those particles at a rate \(\lambda_\mathrm{perfect} = 4\pi D R c_{\infty}\).
+This implies that a cell of radius \(R\) that were totally covered in receptors for a particular ligand would interact with the ligand at rate \(\lambda_\mathrm{perfect}\).
 
-In reality, only a small fraction of the surface of a cell is covered by
-receptors for a particular ligand. In this problem, we compute the
-interaction rate for a cell with partial absorption.
+In reality, only a small fraction of the surface of a cell is covered by receptors for a particular ligand.
+In this problem, we compute the interaction rate for a cell with partial absorption.
 
-Assume the cell has radius \(R \sim 10\,\mu\mathrm{m}\) and is covered
-by \(N\) receptors, each of which is a disk of radius
-\(a \sim 10\,\mathrm{nm}\). We make use of an approximation method that
-assumes there is a radius \(r=R_I\) that is sufficiently far from the
-cell surface, compared to the size of a receptor, that it appears
-infinitely far at the scale of this receptor, but is sufficiently close
-to the cell surface that, from far away, it appears approximately the
-same size as the cell. (By analogy, the planet Earth is of radius \(R\),
-and people on its surface are of size \(a\ll R\). Let \(R_I\) be the
-radius of the Earth's stratosphere: At the scale of a person, \(R_I\) is
-very far from the person, yet at the scale of the solar system, the
-radius of the Earth with or without the stratosphere are
-indistinguishable, i.e., \(R_I \approx R\).)
+Assume the cell has radius \(R \sim 10\,\mu\mathrm{m}\) and is covered by \(N\) receptors, each of which is a disk of radius \(a \sim 10\,\mathrm{nm}\).
+We make use of an approximation method that assumes there is a radius \(r=R_I\) that is sufficiently far from the cell surface, compared to the size of a receptor, that it appears infinitely far at the scale of this receptor, but is sufficiently close to the cell surface that, from far away, it appears approximately the same size as the cell.
+(By analogy, the planet Earth is of radius \(R\), and people on its surface are of size \(a\ll R\).
+Let \(R_I\) be the radius of the Earth's stratosphere: At the scale of a person, \(R_I\) is very far from the person, yet at the scale of the solar system, the radius of the Earth with or without the stratosphere are indistinguishable, i.e., \(R_I \approx R\).)
 
 \begin{center}
 \includegraphics[width=9cm,height=\textheight,keepaspectratio]{fig_receptor-competition.pdf}
@@ -264,19 +186,13 @@ indistinguishable, i.e., \(R_I \approx R\).)
 \begin{enumerate}
 \def\labelenumi{\roman{enumi}.}
 \item
-  An infinite sheet that is no-flux, except for a perfect absorbing disk
-  of radius \(a\), absorbs particles at rate
-  \(\lambda_\mathrm{disk} = 4D a c_{I}\) where \(c_I\) is the
-  concentration sufficiently far from the disk. Therefore the rate at
-  which \(N\) disks absorb particles is \(\lambda_{N} = 4D N a c_{I}\).
+  An infinite sheet that is no-flux, except for a perfect absorbing disk of radius \(a\), absorbs particles at rate \(\lambda_\mathrm{disk} = 4D a c_{I}\) where \(c_I\) is the concentration sufficiently far from the disk.
+  Therefore the rate at which \(N\) disks absorb particles is \(\lambda_{N} = 4D N a c_{I}\).
 
-  At \(r=R_I\), what is the average flux (in particles per time per unit
-  area) of particles, \(\langle J(R_I)\rangle\)? The answer should
-  involve \(c_I\) (which is unspecified at this stage in the
-  calculation).
+  At \(r=R_I\), what is the average flux (in particles per time per unit area) of particles, \(\langle J(R_I)\rangle\)?
+  The answer should involve \(c_I\) (which is unspecified at this stage in the calculation).
 \item
-  At the scale larger than the cell, the concentration \(c(r)\)
-  satisfies the steady-state diffusion equation
+  At the scale larger than the cell, the concentration \(c(r)\) satisfies the steady-state diffusion equation
 
   \[
   0 = D \nabla^2 c.
@@ -292,29 +208,21 @@ indistinguishable, i.e., \(R_I \approx R\).)
   \end{aligned}
   \]
 
-  Note that this type of ODE usually requires 2 boundary conditions, but
-  since \(c_I\) is unspecified, here 3 boundary conditions are needed.
-  Solve the system by making two approximations: First, assume
-  \(J(R_I) = \langle J(R_I)\rangle\) from part (i). (This corresponds to
-  assuming the stratosphere is far from the receptors.) Second, assume
-  \(R=R_I\) (This corresponds to assuming the stratosphere is close to
-  the surface).
+  Note that this type of ODE usually requires 2 boundary conditions, but since \(c_I\) is unspecified, here 3 boundary conditions are needed.
+  Solve the system by making two approximations: First, assume \(J(R_I) = \langle J(R_I)\rangle\) from part (i).
+  (This corresponds to assuming the stratosphere is far from the receptors.)
+  Second, assume \(R=R_I\) (This corresponds to assuming the stratosphere is close to the surface).
 \item
   What is the rate \(\lambda\) at which particles arrive at the surface?
-  This will depend on \(N\). You should find that as
-  \(N\rightarrow\infty\), the rate
-  \(\lambda\rightarrow\lambda_\mathrm{perfect}\), the rate for a
-  perfectly absorbing sphere.
+  This will depend on \(N\).
+  You should find that as \(N\rightarrow\infty\), the rate \(\lambda\rightarrow\lambda_\mathrm{perfect}\), the rate for a perfectly absorbing sphere.
 \item
-  How many receptors \(N\) are needed to obtain half the
-  perfect-absorption rate? At this value of \(N\), what fraction of the
-  cell's surface is covered by receptors? You may use
-  \(R \sim 10\,\mu\mathrm{m}\) and \(a \sim 10\,\mathrm{nm}\).
+  How many receptors \(N\) are needed to obtain half the perfect-absorption rate?
+  At this value of \(N\), what fraction of the cell's surface is covered by receptors?
+  You may use \(R \sim 10\,\mu\mathrm{m}\) and \(a \sim 10\,\mathrm{nm}\).
 \end{enumerate}
 
-This method of approximation, by assuming an intermediate distance
-between two scales, is an example of the Applied Mathematics technique
-called \emph{matched asymptotics}.
+This method of approximation, by assuming an intermediate distance between two scales, is an example of the Applied Mathematics technique called \emph{matched asymptotics}.
 
 
 

@@ -1,9 +1,6 @@
-% Options for packages loaded elsewhere
-% Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
-%
 \documentclass[
   letterpaper,
   DIV=11,
@@ -23,9 +20,7 @@
 \fi
 \usepackage{lmodern}
 \ifPDFTeX\else
-  % xetex/luatex font selection
 \fi
-% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
   \usepackage[]{microtype}
@@ -41,7 +36,6 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
-% Make \paragraph and \subparagraph free-standing
 \makeatletter
 \ifx\paragraph\undefined\else
   \let\oldparagraph\paragraph
@@ -65,16 +59,13 @@
 \fi
 \makeatother
 
-
 \usepackage{longtable,booktabs,array}
 \newcounter{none} % for unnumbered tables
 \usepackage{calc} % for calculating minipage widths
-% Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
 \makeatletter
 \patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
 \makeatother
-% Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
 \usepackage{graphicx}
@@ -89,67 +80,14 @@
   \else\usebox{\pandoc@box}%
   \fi%
 }
-% Set default figure placement to htbp
 \def\fps@figure{htbp}
 \makeatother
-
-
-
-
 
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
-
-
- 
-
-
-% Page furniture for the problem set PDFs, ported from the exam-documentclass originals this course used before the Quarto migration.
-%
-% Pulled in by every problem set's YAML:
-%
-%   format:
-%     pdf:
-%       include-in-header: header.tex
-%     latex:
-%       include-in-header: header.tex
-%
-% Both keys are needed: pdf and latex are separate formats to Quarto, and with the key on pdf alone the shipped .tex comes out without the header its own .pdf has.
-%
-% The exam class provided \header, \headrule and \footer; Quarto's pdf output uses the default article class, so fancyhdr supplies the same furniture.
-% The exam class's \numpages becomes \pageref*{LastPage}, which needs two passes --- Quarto runs latexmk, so that is already handled.
-% The star matters: plain \pageref is a hyperref link, so the page count comes out link-blue.
-%
-% ---------------------------------------------------------------------------
-% ADAPTING THIS FOR ANOTHER COURSE: change the two strings below, nothing else.
-% ---------------------------------------------------------------------------
-
-% \usepackage{fancyhdr}
-% \usepackage{lastpage}
-
-% \pagestyle{fancy}
-% \fancyhf{}
-
-% \fancyhead[L]{Physics 230A/146A: Biological Physics}   % <- course name
-% \fancyfoot[L]{\textit{jun.allard@uci.edu}}             % <- contact
-
-% \fancyfoot[R]{Page \thepage\ of \pageref*{LastPage}}
-
-% \renewcommand{\headrulewidth}{0.4pt}
-% \renewcommand{\footrulewidth}{0pt}
-
-% % Quarto's title block starts the document with \maketitle, which forces the plain pagestyle on the first page and would otherwise drop the header exactly where it is most wanted.
-% \fancypagestyle{plain}{%
-%   \fancyhf{}%
-%   \fancyhead[L]{Physics 230A/146A: Biological Physics}%
-%   \fancyfoot[L]{\textit{jun.allard@uci.edu}}%
-%   \fancyfoot[R]{Page \thepage\ of \pageref*{LastPage}}%
-%   \renewcommand{\headrulewidth}{0.4pt}%
-%   \renewcommand{\footrulewidth}{0pt}%
-% }
 \KOMAoption{captions}{tableheading}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
@@ -206,16 +144,15 @@
   pdfcreator={LaTeX via pandoc}}
 
 \ifXeTeX
-\special{pdf:trailerid [ <53c7db81e801e358727df0228bfd0d9e> <53c7db81e801e358727df0228bfd0d9e> ]}
+\special{pdf:trailerid [ <3e84c95742030ab1b748f19bc095ac80> <3e84c95742030ab1b748f19bc095ac80> ]}
 \fi
 \ifPDFTeX
 \pdftrailerid{}
-\pdftrailer{/ID [ <53c7db81e801e358727df0228bfd0d9e> <53c7db81e801e358727df0228bfd0d9e> ]}
+\pdftrailer{/ID [ <3e84c95742030ab1b748f19bc095ac80> <3e84c95742030ab1b748f19bc095ac80> ]}
 \fi
 \ifLuaTeX
-\pdfvariable trailerid {[ <53c7db81e801e358727df0228bfd0d9e> <53c7db81e801e358727df0228bfd0d9e> ]}
+\pdfvariable trailerid {[ <3e84c95742030ab1b748f19bc095ac80> <3e84c95742030ab1b748f19bc095ac80> ]}
 \fi
-
 
 \title{Problem Set 1: What happens in a composite material?}
 \usepackage{etoolbox}
@@ -231,41 +168,30 @@
 \maketitle
 
 
-Microtubules are rigid polymers that, among other things, provide
-mechanical strength inside nerve axons. Several microtubules are bundled
-together by bundling proteins, one of which is called Tau. In healthy
-axons, Tau exists as individual filaments that are relatively soft
-compared to microtubule. In a class of disease called Tau-opathies ---
-of which Alzheimer's is the most famous --- Tau forms neurofibrilar
-tangles in which several Tau molecules tangle together. In either case,
-the mechanical properties of the axon are determined by two objects with
-different mechanical properties attached in series (stiff microtubules
-and soft healthy Tau, or stiff microtubules and even stiffer tangled
-Tau).
+Microtubules are rigid polymers that, among other things, provide mechanical strength inside nerve axons.
+Several microtubules are bundled together by bundling proteins, one of which is called Tau.
+In healthy axons, Tau exists as individual filaments that are relatively soft compared to microtubule.
+In a class of disease called Tau-opathies --- of which Alzheimer's is the most famous --- Tau forms neurofibrilar tangles in which several Tau molecules tangle together.
+In either case, the mechanical properties of the axon are determined by two objects with different mechanical properties attached in series (stiff microtubules and soft healthy Tau, or stiff microtubules and even stiffer tangled Tau).
 
-In this problem, we ask, if the axon is subject to a force, which
-mechanical element ``takes a bigger hit''?
+In this problem, we ask, if the axon is subject to a force, which mechanical element ``takes a bigger hit''?
 
 \begin{center}
 \includegraphics[width=10cm,height=\textheight,keepaspectratio]{fig_composite-material.pdf}
 \end{center}
 
-Suppose a stiff spring with spring constant \(k_1\) is connected, in
-series, to a soft spring of stiffness \(k_{2}=\epsilon k_1\) where
-\(\epsilon < 1\). Assume each spring has a linear spring energy
-\(E_i=\frac{1}{2} k_i (\bar{x}_i - x_i)^2\) where \(\bar{x}_i\) is the
-rest length of spring \(i\). Now suppose an extensional force \(F\) is
-applied to both ends of the pair.
+Suppose a stiff spring with spring constant \(k_1\) is connected, in series, to a soft spring of stiffness \(k_{2}=\epsilon k_1\) where \(\epsilon < 1\).
+Assume each spring has a linear spring energy \(E_i=\frac{1}{2} k_i (\bar{x}_i - x_i)^2\) where \(\bar{x}_i\) is the rest length of spring \(i\).
+Now suppose an extensional force \(F\) is applied to both ends of the pair.
 
 \begin{enumerate}
 \def\labelenumi{\roman{enumi}.}
 \tightlist
 \item
-  Write the energy of the system \(E(x_1,x_2)\). Include the external
-  force \(F\) using a fictitious potential. Find the mechanical
-  equilibrium \((x_1,x_2)\) by minimizing the energy. Tip: You could
-  define new configuration variables \(\Delta x_i = \bar{x}_i-x_i\) to
-  make algebra cleaner.
+  Write the energy of the system \(E(x_1,x_2)\).
+  Include the external force \(F\) using a fictitious potential.
+  Find the mechanical equilibrium \((x_1,x_2)\) by minimizing the energy.
+  Tip: You could define new configuration variables \(\Delta x_i = \bar{x}_i-x_i\) to make algebra cleaner.
 \item
   Which spring is stretched more? By how much?
 \item

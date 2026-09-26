@@ -1,9 +1,6 @@
-% Options for packages loaded elsewhere
-% Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
-%
 \documentclass[
   letterpaper,
   DIV=11,
@@ -23,9 +20,7 @@
 \fi
 \usepackage{lmodern}
 \ifPDFTeX\else
-  % xetex/luatex font selection
 \fi
-% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
   \usepackage[]{microtype}
@@ -41,7 +36,6 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
-% Make \paragraph and \subparagraph free-standing
 \makeatletter
 \ifx\paragraph\undefined\else
   \let\oldparagraph\paragraph
@@ -65,16 +59,13 @@
 \fi
 \makeatother
 
-
 \usepackage{longtable,booktabs,array}
 \newcounter{none} % for unnumbered tables
 \usepackage{calc} % for calculating minipage widths
-% Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
 \makeatletter
 \patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
 \makeatother
-% Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
 \usepackage{graphicx}
@@ -89,67 +80,14 @@
   \else\usebox{\pandoc@box}%
   \fi%
 }
-% Set default figure placement to htbp
 \def\fps@figure{htbp}
 \makeatother
-
-
-
-
 
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
-
-
- 
-
-
-% Page furniture for the problem set PDFs, ported from the exam-documentclass originals this course used before the Quarto migration.
-%
-% Pulled in by every problem set's YAML:
-%
-%   format:
-%     pdf:
-%       include-in-header: header.tex
-%     latex:
-%       include-in-header: header.tex
-%
-% Both keys are needed: pdf and latex are separate formats to Quarto, and with the key on pdf alone the shipped .tex comes out without the header its own .pdf has.
-%
-% The exam class provided \header, \headrule and \footer; Quarto's pdf output uses the default article class, so fancyhdr supplies the same furniture.
-% The exam class's \numpages becomes \pageref*{LastPage}, which needs two passes --- Quarto runs latexmk, so that is already handled.
-% The star matters: plain \pageref is a hyperref link, so the page count comes out link-blue.
-%
-% ---------------------------------------------------------------------------
-% ADAPTING THIS FOR ANOTHER COURSE: change the two strings below, nothing else.
-% ---------------------------------------------------------------------------
-
-% \usepackage{fancyhdr}
-% \usepackage{lastpage}
-
-% \pagestyle{fancy}
-% \fancyhf{}
-
-% \fancyhead[L]{Physics 230A/146A: Biological Physics}   % <- course name
-% \fancyfoot[L]{\textit{jun.allard@uci.edu}}             % <- contact
-
-% \fancyfoot[R]{Page \thepage\ of \pageref*{LastPage}}
-
-% \renewcommand{\headrulewidth}{0.4pt}
-% \renewcommand{\footrulewidth}{0pt}
-
-% % Quarto's title block starts the document with \maketitle, which forces the plain pagestyle on the first page and would otherwise drop the header exactly where it is most wanted.
-% \fancypagestyle{plain}{%
-%   \fancyhf{}%
-%   \fancyhead[L]{Physics 230A/146A: Biological Physics}%
-%   \fancyfoot[L]{\textit{jun.allard@uci.edu}}%
-%   \fancyfoot[R]{Page \thepage\ of \pageref*{LastPage}}%
-%   \renewcommand{\headrulewidth}{0.4pt}%
-%   \renewcommand{\footrulewidth}{0pt}%
-% }
 \KOMAoption{captions}{tableheading}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
@@ -206,16 +144,15 @@
   pdfcreator={LaTeX via pandoc}}
 
 \ifXeTeX
-\special{pdf:trailerid [ <4654d39c987a2054b238bae15e0dfb0c> <4654d39c987a2054b238bae15e0dfb0c> ]}
+\special{pdf:trailerid [ <25c8a98c3832990558cd1e5e1fe289c7> <25c8a98c3832990558cd1e5e1fe289c7> ]}
 \fi
 \ifPDFTeX
 \pdftrailerid{}
-\pdftrailer{/ID [ <4654d39c987a2054b238bae15e0dfb0c> <4654d39c987a2054b238bae15e0dfb0c> ]}
+\pdftrailer{/ID [ <25c8a98c3832990558cd1e5e1fe289c7> <25c8a98c3832990558cd1e5e1fe289c7> ]}
 \fi
 \ifLuaTeX
-\pdfvariable trailerid {[ <4654d39c987a2054b238bae15e0dfb0c> <4654d39c987a2054b238bae15e0dfb0c> ]}
+\pdfvariable trailerid {[ <25c8a98c3832990558cd1e5e1fe289c7> <25c8a98c3832990558cd1e5e1fe289c7> ]}
 \fi
-
 
 \title{Problem Set 8: DNA in a nucleus}
 \usepackage{etoolbox}
@@ -231,11 +168,8 @@
 \maketitle
 
 
-DNA in eukaryotic cells is packed by complex machinery inside the
-nucleus. Here, will use the ideal chain model to explore the need for
-this machinery by studying what would happen if the DNA were not
-carefully packed, i.e., by assuming it is just a freely-jointed chain
-randomly packed in a spherical nucleus.
+DNA in eukaryotic cells is packed by complex machinery inside the nucleus.
+Here, will use the ideal chain model to explore the need for this machinery by studying what would happen if the DNA were not carefully packed, i.e., by assuming it is just a freely-jointed chain randomly packed in a spherical nucleus.
 
 \begin{enumerate}
 \def\labelenumi{\roman{enumi}.}
@@ -247,8 +181,7 @@ randomly packed in a spherical nucleus.
   \item
     The total length of DNA of a typical human chromosome, \(l\),
   \item
-    The size (roughly the diameter) of a typical eukaryotic nucleus,
-    \(D\),
+    The size (roughly the diameter) of a typical eukaryotic nucleus, \(D\),
   \item
     The width of double-stranded DNA, \(w\).
   \item
@@ -256,73 +189,58 @@ randomly packed in a spherical nucleus.
   \end{itemize}
 \end{enumerate}
 
-We will use these quantities to estimate how big a chromosome is, first
-from the point-of-view of occupation fraction, then from the
-point-of-view of polymer physics.
+We will use these quantities to estimate how big a chromosome is, first from the point-of-view of occupation fraction, then from the point-of-view of polymer physics.
 
 \begin{enumerate}
 \def\labelenumi{\roman{enumi}.}
 \setcounter{enumi}{1}
 \tightlist
 \item
-  Assume DNA is a long cylinder of width \(w\) and length \(l\). What is
-  the total volume of DNA in each cell? You may assume a single
-  chromosome.
+  Assume DNA is a long cylinder of width \(w\) and length \(l\).
+  What is the total volume of DNA in each cell?
+  You may assume a single chromosome.
 \item
-  Assuming the nucleus is spherical, what fraction of the volume of the
-  nucleus is occupied by DNA?
+  Assuming the nucleus is spherical, what fraction of the volume of the nucleus is occupied by DNA?
 \end{enumerate}
 
-For the remainder of the problem, you may use order-of-magnitude
-precision.
+For the remainder of the problem, you may use order-of-magnitude precision.
 
-The end-to-end distance \(r_{ee}\) of a flexible polymer satisfies the
-probability distribution
+The end-to-end distance \(r_{ee}\) of a flexible polymer satisfies the probability distribution
 
 \[
 p(r_{ee}) = 4\pi r_{ee}^2 \left( \frac{3}{2\pi l\,l_p}\right)^{\frac{3}{2}} \exp\left(\frac{-3r_{ee}^2}{2l\,l_p}\right).
 \]
 
-If a system explores macrostates parametrized by \(r\), and in the
-absence of confinement or external forces has probability distribution
-\(p(r)\), then the entropy of macrostate \(r\) is
+If a system explores macrostates parametrized by \(r\), and in the absence of confinement or external forces has probability distribution \(p(r)\), then the entropy of macrostate \(r\) is
 
 \[
 S(r) = k_B \ln \left( p(r)\right) + S_0
 \]
 
 where \(S_0\) is a constant that is independent of the system's state.
-(Eventually, only derivatives of \(S(r)\) matter for forces and
-pressures, so these should be independent of \(S_0\).)
+(Eventually, only derivatives of \(S(r)\) matter for forces and pressures, so these should be independent of \(S_0\).)
 
-If a polymer is confined to a sphere of diameter \(D\), this would mean
-the maximum distance between any two nodes, \(r_\mathrm{max}\), is less
-than \(D\). Therefore, to be rigorous, computing the force a polymer
-exerts by this confinement would require the probability distribution
-\(p_\mathrm{max}(r_\mathrm{max})\). Unfortunately we do not have an
-expression for \(p_\mathrm{max}(r_\mathrm{max})\). Let us instead make
-an approximation that there exists a characteristic polymer ``size''
-\(r\) such that \(r \sim r_{ee} \sim r_\mathrm{max}\).
+If a polymer is confined to a sphere of diameter \(D\), this would mean the maximum distance between any two nodes, \(r_\mathrm{max}\), is less than \(D\).
+Therefore, to be rigorous, computing the force a polymer exerts by this confinement would require the probability distribution \(p_\mathrm{max}(r_\mathrm{max})\).
+Unfortunately we do not have an expression for \(p_\mathrm{max}(r_\mathrm{max})\).
+Let us instead make an approximation that there exists a characteristic polymer ``size'' \(r\) such that \(r \sim r_{ee} \sim r_\mathrm{max}\).
 
 \begin{enumerate}
 \def\labelenumi{\roman{enumi}.}
 \setcounter{enumi}{3}
 \tightlist
 \item
-  Write an expression for the free energy \(G = -T S\) as a function of
-  polymer size \(r\).
+  Write an expression for the free energy \(G = -T S\) as a function of polymer size \(r\).
 \item
-  Pressure is force per unit area. Find an expression for the outward
-  pressure exerted by the polymer if it is confined to a sphere of
-  radius \(r=R\).
+  Pressure is force per unit area.
+  Find an expression for the outward pressure exerted by the polymer if it is confined to a sphere of radius \(r=R\).
 \item
-  Use your findings to estimate the pressure exerted by DNA inside the
-  nucleus, if it were randomly packed. Report your value in units of
-  atmospheres (1 atmosphere \(\approx 10^5\) Pascals).
+  Use your findings to estimate the pressure exerted by DNA inside the nucleus, if it were randomly packed.
+  Report your value in units of atmospheres (1 atmosphere \(\approx 10^5\) Pascals).
 \item
-  We wish to answer the question: is the pressure you found in (vi)
-  sufficient to rupture the nucleus? What number should this pressure be
-  compared with? Look up this number and make this comparison.
+  We wish to answer the question: is the pressure you found in (vi) sufficient to rupture the nucleus?
+  What number should this pressure be compared with?
+  Look up this number and make this comparison.
 \end{enumerate}
 
 
