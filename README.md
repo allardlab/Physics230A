@@ -25,6 +25,25 @@ Every problem set is also on the website as html, pdf, tex and markdown.
 - [Problem Set 8: DNA in a nucleus](docs/PS8_dna-in-a-nucleus.ipynb)
 - [Python test drive](docs/python-test-drive.ipynb)
 
+## Problem sets in Latex
+
+Each problem set's Latex source, to write your solutions into if you like.
+Click one to open it, build it with the green ▶ at the top right of the editor (**Build LaTeX project**), and open the result with the icon beside it (**View LaTeX PDF**).
+
+- [Problem Set 0: Scavenger hunt](docs/PS0_scavenger-hunt.tex)
+- [Problem Set 1: What happens in a composite material?](docs/PS1_composite-material.tex)
+- [Problem Set 2: Viral entry](docs/PS2_viral-entry.tex)
+- [Problem Set 3: Morphogens in an epithelial sheet](docs/PS3_morphogens-epithelial-sheet.tex)
+- [Problem Set 4: How much do receptors compete?](docs/PS4_receptor-competition.tex)
+- [Problem Set 5: Kinetic segregation](docs/PS5_kinetic-segregation.tex)
+- [Problem Set 6: Bacterial export](docs/PS6_bacterial-export.tex)
+- [Problem Set 7: Inferring methyltransferase binding rates](docs/PS7_methyltransferase-rates.tex)
+- [Problem Set 8: DNA in a nucleus](docs/PS8_dna-in-a-nucleus.tex)
+
+A codespace opened from the button below cannot save your work back to GitHub, and one left unused is deleted after 30 days, so download anything you write.
+If you would rather keep working in Overleaf, every problem set on the website has an **Overleaf** link, which opens that problem set's `.tex` and figures as a new private project in your own Overleaf account.
+UCI students have Overleaf Professional free through [overleaf.com/edu/uci](https://www.overleaf.com/edu/uci), though nothing here needs it.
+
 ## Running them
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/allardlab/Physics230A)

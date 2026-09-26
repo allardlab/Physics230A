@@ -1,0 +1,21 @@
+Activity,Type,Title,Option,Option,Option,Option,Option,Option
+Poll,Multiple choice,1. Number of amino acids in the average human protein,I don't know,10 or fewer,30,100,300,1000 or more
+Poll,Multiple choice,2. Length of the longest nerves in humans,I don't know,10⁻⁴ m (100 µm) or smaller,10⁻³ m (1 mm),10⁻² m (1 cm),10⁻¹ m (10 cm),10⁰ m (1 m) or larger
+Poll,Multiple choice,3. Size of a eukaryotic cell,I don't know,10⁻⁸ m (10 nm) or smaller,10⁻⁷ m (100 nm),10⁻⁶ m (1 µm),10⁻⁵ m (10 µm),10⁻⁴ m (100 µm) or larger
+Poll,Multiple choice,4. Size of a bacterial cell,I don't know,10⁻⁸ m (10 nm) or smaller,10⁻⁷ m (100 nm),10⁻⁶ m (1 µm),10⁻⁵ m (10 µm),10⁻⁴ m (100 µm) or larger
+Poll,Multiple choice,"5. Size of an organelle, like the eukaryotic nucleus",I don't know,10⁻⁸ m (10 nm) or smaller,10⁻⁷ m (100 nm),10⁻⁶ m (1 µm),10⁻⁵ m (10 µm),10⁻⁴ m (100 µm) or larger
+Poll,Multiple choice,6. Width of the plasma membrane,I don't know,10⁻¹¹ m (10 pm) or smaller,10⁻¹⁰ m (0.1 nm),10⁻⁹ m (1 nm),10⁻⁸ m (10 nm),10⁻⁷ m (100 nm) or larger
+Poll,Multiple choice,7. Size of your favorite protein,I don't know,10⁻¹¹ m (10 pm) or smaller,10⁻¹⁰ m (0.1 nm),10⁻⁹ m (1 nm),10⁻⁸ m (10 nm),10⁻⁷ m (100 nm) or larger
+Poll,Multiple choice,8. Resolution of a traditional light microscope,I don't know,10⁻¹⁰ m (0.1 nm) or smaller,10⁻⁹ m (1 nm),10⁻⁸ m (10 nm),10⁻⁷ m (100 nm),10⁻⁶ m (1 µm) or larger
+Poll,Multiple choice,9. Resolution of a traditional electron microscope,I don't know,10⁻¹⁰ m (0.1 nm) or smaller,10⁻⁹ m (1 nm),10⁻⁸ m (10 nm),10⁻⁷ m (100 nm),10⁻⁶ m (1 µm) or larger
+Poll,Multiple choice,10. Size of a water molecule,I don't know,10⁻¹¹ m (10 pm) or smaller,10⁻¹⁰ m (0.1 nm),10⁻⁹ m (1 nm),10⁻⁸ m (10 nm),10⁻⁷ m (100 nm) or larger
+Poll,Multiple choice,11. Width of DNA,I don't know,10⁻¹¹ m (10 pm) or smaller,10⁻¹⁰ m (0.1 nm),10⁻⁹ m (1 nm),10⁻⁸ m (10 nm),10⁻⁷ m (100 nm) or larger
+Poll,Multiple choice,12. Turnover time of cells in the human body,I don't know,10⁴ s (≈ 3 hours) or less,10⁵ s (≈ 1 day),10⁶ s (≈ 12 days),10⁷ s (≈ 4 months),10⁸ s (≈ 3 years) or more
+Poll,Multiple choice,13. Generation time (time between divisions) of a bacterium in lab conditions,I don't know,10⁰ s (1 s) or less,10¹ s (10 s),10² s (≈ 2 min),10³ s (≈ 17 min),10⁴ s (≈ 3 hours) or more
+Poll,Multiple choice,14. Time to transcribe one DNA base pair to RNA,I don't know,10⁻⁴ s (100 µs) or less,10⁻³ s (1 ms),10⁻² s (10 ms),10⁻¹ s (100 ms),10⁰ s (1 s) or more
+Poll,Multiple choice,15. Time to translate one amino acid in an RNA into protein,I don't know,10⁻⁴ s (100 µs) or less,10⁻³ s (1 ms),10⁻² s (10 ms),10⁻¹ s (100 ms),10⁰ s (1 s) or more
+Poll,Multiple choice,16. Time for a human reflex,I don't know,10⁻⁴ s (100 µs) or less,10⁻³ s (1 ms),10⁻² s (10 ms),10⁻¹ s (100 ms),10⁰ s (1 s) or more
+Poll,Multiple choice,17. Time for protein folding,I don't know,10⁻⁸ s (10 ns) or less,10⁻⁶ s (1 µs),10⁻⁴ s (100 µs),10⁻² s (10 ms),10⁰ s (1 s) or more
+Poll,Multiple choice,18. Energy of the reaction ATP → ADP-Pi (per molecule),I don't know,10⁻²² J (= 0.1 pN·nm ≈ 0.0006 eV) or less,10⁻²¹ J (= 1 pN·nm ≈ 0.006 eV),10⁻²⁰ J (= 10 pN·nm ≈ 0.06 eV),10⁻¹⁹ J (= 100 pN·nm ≈ 0.6 eV),10⁻¹⁸ J (= 1000 pN·nm ≈ 6 eV) or more
+Poll,Multiple choice,19. The thermal energy unit k_B T,I don't know,10⁻²² J (= 0.1 pN·nm ≈ 0.0006 eV) or less,10⁻²¹ J (= 1 pN·nm ≈ 0.006 eV),10⁻²⁰ J (= 10 pN·nm ≈ 0.06 eV),10⁻¹⁹ J (= 100 pN·nm ≈ 0.6 eV),10⁻¹⁸ J (= 1000 pN·nm ≈ 6 eV) or more
+Poll,Multiple choice,"20. Energy to move one electron across a cell membrane, against the electric field",I don't know,10⁻²² J (= 0.1 pN·nm ≈ 0.0006 eV) or less,10⁻²¹ J (= 1 pN·nm ≈ 0.006 eV),10⁻²⁰ J (= 10 pN·nm ≈ 0.06 eV),10⁻¹⁹ J (= 100 pN·nm ≈ 0.6 eV),10⁻¹⁸ J (= 1000 pN·nm ≈ 6 eV) or more
