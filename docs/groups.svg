@@ -1,40 +1,69 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 290.726 367" role="img" aria-label="Seating chart for Monday, 28 September: 6 groups of 3 to 4, arranged as in the room." font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#000000">
-  <title>Seating chart for Monday, 28 September: 6 groups of 3 to 4, arranged as in the room.</title>
-  <text x="12" y="24" font-weight="bold">Monday, 28 September</text>
-  <text x="145.363" y="46" text-anchor="middle">↑ front of room</text>
-  <rect x="12" y="62" width="128.363" height="91" fill="#ffffff" stroke="#000000" stroke-width="2" />
-  <text x="20" y="82" font-weight="bold">Team Whiteboards</text>
-  <text x="20" y="97">Tiffany</text>
-  <text x="20" y="112">Jonathan</text>
-  <text x="20" y="127">Jack</text>
-  <text x="20" y="142">Megan</text>
-  <rect x="150.363" y="62" width="128.363" height="91" fill="#ffffff" stroke="#000000" stroke-width="2" />
-  <text x="158.363" y="82" font-weight="bold">Team Lectern</text>
-  <text x="158.363" y="97">Yifan</text>
-  <text x="158.363" y="112">Liam</text>
-  <text x="158.363" y="127">Sienna</text>
-  <text x="158.363" y="142">Hunter</text>
-  <rect x="12" y="163" width="128.363" height="91" fill="#ffffff" stroke="#000000" stroke-width="2" />
-  <text x="20" y="183" font-weight="bold">Team Clock</text>
-  <text x="20" y="198">Natalie</text>
-  <text x="20" y="213">Joshua</text>
-  <text x="20" y="228">Monica</text>
-  <text x="20" y="243">John</text>
-  <rect x="150.363" y="163" width="128.363" height="91" fill="#ffffff" stroke="#000000" stroke-width="2" />
-  <text x="158.363" y="183" font-weight="bold">Team Pillar</text>
-  <text x="158.363" y="198">Yuhe</text>
-  <text x="158.363" y="213">Anya</text>
-  <text x="158.363" y="228">Matin</text>
-  <text x="158.363" y="243">Matthias</text>
-  <rect x="12" y="264" width="128.363" height="91" fill="#ffffff" stroke="#000000" stroke-width="2" />
-  <text x="20" y="284" font-weight="bold">Team Door</text>
-  <text x="20" y="299">Daniel</text>
-  <text x="20" y="314">Alicia</text>
-  <text x="20" y="329">Chase</text>
-  <text x="20" y="344">Nikolai</text>
-  <rect x="150.363" y="264" width="128.363" height="91" fill="#ffffff" stroke="#000000" stroke-width="2" />
-  <text x="158.363" y="284" font-weight="bold">Team Window</text>
-  <text x="158.363" y="299">Jayanth</text>
-  <text x="158.363" y="314">Waldo</text>
-  <text x="158.363" y="329">Keilani</text>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 290.73 367">
+  <!-- Generator: Adobe Illustrator 30.8.1, SVG Export Plug-In . SVG Version: 2.1.4 Build 1)  -->
+  <defs>
+    <style>
+      .st0, .st1 {
+        font-family: Helvetica, Helvetica;
+      }
+
+      .st0, .st2, .st3 {
+        font-size: 12px;
+        isolation: isolate;
+      }
+
+      .st4 {
+        font-family: MyriadPro-Regular, 'Myriad Pro';
+      }
+
+      .st5 {
+        fill: #fff;
+        stroke: #000;
+        stroke-width: 2px;
+      }
+
+      .st3 {
+        font-family: Helvetica-Bold, Helvetica;
+        font-weight: 700;
+      }
+    </style>
+  </defs>
+  <text class="st3" transform="translate(12 24)"><tspan x="0" y="0">Wednesday, 30 September</tspan></text>
+  <text class="st2" transform="translate(105.88 46)"><tspan class="st4" x="0" y="0">↑</tspan><tspan class="st1" x="6" y="0" xml:space="preserve"> front of room</tspan></text>
+  <rect class="st5" x="12" y="62" width="128.36" height="91"/>
+  <text class="st3" transform="translate(20 82)"><tspan x="0" y="0">Team Whiteboards</tspan></text>
+  <text class="st0" transform="translate(20 97)"><tspan x="0" y="0">Tiffany</tspan></text>
+  <text class="st0" transform="translate(20 112)"><tspan x="0" y="0">Jonathan</tspan></text>
+  <text class="st0" transform="translate(20 127)"><tspan x="0" y="0">Jack</tspan></text>
+  <text class="st0" transform="translate(20 142)"><tspan x="0" y="0">Megan</tspan></text>
+  <rect class="st5" x="150.36" y="62" width="128.36" height="91"/>
+  <text class="st3" transform="translate(158.36 82)"><tspan x="0" y="0">Team Lectern</tspan></text>
+  <text class="st0" transform="translate(158.36 97)"><tspan x="0" y="0">Yifan</tspan></text>
+  <text class="st0" transform="translate(158.36 112)"><tspan x="0" y="0">Liam</tspan></text>
+  <text class="st0" transform="translate(158.36 127)"><tspan x="0" y="0">Sienna</tspan></text>
+  <text class="st0" transform="translate(158.36 142)"><tspan x="0" y="0">Hunter</tspan></text>
+  <rect class="st5" x="12" y="163" width="128.36" height="91"/>
+  <text class="st3" transform="translate(20 183)"><tspan x="0" y="0">Team Clock</tspan></text>
+  <text class="st0" transform="translate(20 198)"><tspan x="0" y="0">Natalie</tspan></text>
+  <text class="st0" transform="translate(20 213)"><tspan x="0" y="0">Joshua</tspan></text>
+  <text class="st0" transform="translate(20 228)"><tspan x="0" y="0">Monica</tspan></text>
+  <text class="st0" transform="translate(20 243)"><tspan x="0" y="0">John</tspan></text>
+  <rect class="st5" x="150.36" y="163" width="128.36" height="91"/>
+  <text class="st3" transform="translate(158.36 183)"><tspan x="0" y="0">Team Pillar</tspan></text>
+  <text class="st0" transform="translate(158.36 198)"><tspan x="0" y="0">Yuhe</tspan></text>
+  <text class="st0" transform="translate(158.36 213)"><tspan x="0" y="0">Anya</tspan></text>
+  <text class="st0" transform="translate(158.36 228)"><tspan x="0" y="0">Matin</tspan></text>
+  <text class="st0" transform="translate(158.36 243)"><tspan x="0" y="0">Matthias</tspan></text>
+  <rect class="st5" x="12" y="264" width="128.36" height="91"/>
+  <text class="st3" transform="translate(20 284)"><tspan x="0" y="0">Team Door</tspan></text>
+  <text class="st0" transform="translate(20 299)"><tspan x="0" y="0">Daniel</tspan></text>
+  <text class="st0" transform="translate(20 314)"><tspan x="0" y="0">Alicia</tspan></text>
+  <text class="st0" transform="translate(20 329)"><tspan x="0" y="0">Chase</tspan></text>
+  <text class="st0" transform="translate(20 344)"><tspan x="0" y="0">Nikolai</tspan></text>
+  <rect class="st5" x="150.36" y="264" width="128.36" height="91"/>
+  <text class="st3" transform="translate(158.36 284)"><tspan x="0" y="0">Team Window</tspan></text>
+  <text class="st0" transform="translate(158.36 299)"><tspan x="0" y="0">Jayanth</tspan></text>
+  <text class="st0" transform="translate(158.36 314)"><tspan x="0" y="0">Waldo</tspan></text>
+  <text class="st0" transform="translate(158.36 329)"><tspan x="0" y="0">Keilani</tspan></text>
+  <text class="st0" transform="translate(99.55 143.24)"><tspan x="0" y="0">Henry</tspan></text>
 </svg>
