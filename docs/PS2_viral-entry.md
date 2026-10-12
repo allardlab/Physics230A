@@ -15,10 +15,10 @@ the membrane’s surface. For a sphere, $\kappa = 2/R$ where $R$ is the
 radius of the sphere. For a cylinder, $\kappa = 1/R$ where $R$ is the
 radius of the cylinder.
 
-Viruses spread between cells as virus particles, or virions. These
-virions are not able to passively enter their host cells; in many cases,
-they must hijack the cell’s endocytic machinery to help them actively
-gain entry.
+Viruses spread between cells as virus particles, or virions. In this
+question, we will explore the energetic constraints on virion entry into
+the host cell. Can it happen passively, or does it require active
+(energy-consuming) machinery?
 
 <img src="fig_viral-entry.svg" style="width:10cm"
 data-fig-align="center"
