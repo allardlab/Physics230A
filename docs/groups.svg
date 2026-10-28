@@ -1,6 +1,42 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256.367 97" role="img" aria-label="OPEN SEATING TODAY, Monday, 26 October" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#000000">
-  <title>OPEN SEATING TODAY, Monday, 26 October</title>
-  <text x="12" y="24" font-weight="bold">Monday, 26 October</text>
-  <rect x="12" y="40" width="232.367" height="45" fill="#ffffff" stroke="#000000" stroke-width="2" />
-  <text x="128.184" y="68.5" font-size="18" font-weight="bold" text-anchor="middle">OPEN SEATING TODAY</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 290.726 382" role="img" aria-label="Seating chart for Wednesday, 28 October: 6 groups of 4 to 5, arranged as in the room." font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#000000">
+  <title>Seating chart for Wednesday, 28 October: 6 groups of 4 to 5, arranged as in the room.</title>
+  <text x="12" y="24" font-weight="bold">Wednesday, 28 October</text>
+  <text x="145.363" y="46" text-anchor="middle">↑ front of room</text>
+  <rect x="12" y="62" width="128.363" height="106" fill="#ffffff" stroke="#000000" stroke-width="2" />
+  <text x="20" y="82" font-weight="bold">Team Whiteboards</text>
+  <text x="20" y="97">Henry</text>
+  <text x="20" y="112">Liam</text>
+  <text x="20" y="127">Yuhe</text>
+  <text x="20" y="142">Hunter</text>
+  <text x="20" y="157">Keilani</text>
+  <rect x="150.363" y="62" width="128.363" height="106" fill="#ffffff" stroke="#000000" stroke-width="2" />
+  <text x="158.363" y="82" font-weight="bold">Team Lectern</text>
+  <text x="158.363" y="97">Jonathan</text>
+  <text x="158.363" y="112">Yifan</text>
+  <text x="158.363" y="127">Matthias</text>
+  <text x="158.363" y="142">Anya</text>
+  <rect x="12" y="178" width="128.363" height="91" fill="#ffffff" stroke="#000000" stroke-width="2" />
+  <text x="20" y="198" font-weight="bold">Team Clock</text>
+  <text x="20" y="213">Jayanth</text>
+  <text x="20" y="228">Alicia</text>
+  <text x="20" y="243">Chase</text>
+  <text x="20" y="258">Natalie</text>
+  <rect x="150.363" y="178" width="128.363" height="91" fill="#ffffff" stroke="#000000" stroke-width="2" />
+  <text x="158.363" y="198" font-weight="bold">Team Pillar</text>
+  <text x="158.363" y="213">Daniel</text>
+  <text x="158.363" y="228">Manuel</text>
+  <text x="158.363" y="243">Jack</text>
+  <text x="158.363" y="258">Sienna</text>
+  <rect x="12" y="279" width="128.363" height="91" fill="#ffffff" stroke="#000000" stroke-width="2" />
+  <text x="20" y="299" font-weight="bold">Team Door</text>
+  <text x="20" y="314">Megan</text>
+  <text x="20" y="329">Monica</text>
+  <text x="20" y="344">Tiffany</text>
+  <text x="20" y="359">Nikolai</text>
+  <rect x="150.363" y="279" width="128.363" height="91" fill="#ffffff" stroke="#000000" stroke-width="2" />
+  <text x="158.363" y="299" font-weight="bold">Team Window</text>
+  <text x="158.363" y="314">Matin</text>
+  <text x="158.363" y="329">Joshua</text>
+  <text x="158.363" y="344">John</text>
+  <text x="158.363" y="359">Waldo</text>
 </svg>
